@@ -45,4 +45,12 @@ group :development, :test do
 end
 
 gem 'foundation-rails'
+gem 'workbook'
+# gem 'workbook', git: '/Users/murb/Documents/Zakelijk/Projecten/gems/workbook'
+gem 'simple_form'
+gem 'carrierwave'
+gem 'kramdown'
+gem 'email_validator'
+gem 'pg'
+gem 'devise'
 
