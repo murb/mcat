@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Session:</strong>
+  <%= @participant.session %>
+</p>
+
+<p>
+  <strong>Invite hash:</strong>
+  <%= @participant.invite_hash %>
+</p>
+
+<p>
+  <strong>Participant hash:</strong>
+  <%= @participant.participant_hash %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @participant.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @participant.gender %>
+</p>
+
+<%= link_to 'Edit', edit_participant_path(@participant) %> |
+<%= link_to 'Back', participants_path %>

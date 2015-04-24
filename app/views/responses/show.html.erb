@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Participant:</strong>
+  <%= @response.participant_id %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @response.item_id %>
+</p>
+
+<p>
+  <strong>Item serialized:</strong>
+  <%= @response.item_serialized %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @response.value %>
+</p>
+
+<%= link_to 'Edit', edit_response_path(@response) %> |
+<%= link_to 'Back', responses_path %>

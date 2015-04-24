@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :responses
+  resources :participants
+  get 'participant/new'
+
   devise_for :admins
   devise_for :examinators
   resources :itembanks
