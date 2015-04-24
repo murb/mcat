@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Itembanks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Source</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @itembanks.each do |itembank| %>
+      <tr>
+        <td><%= itembank.name %></td>
+        <td><%= itembank.source %></td>
+        <td><%= link_to 'Show', itembank %></td>
+        <td><%= link_to 'Edit', edit_itembank_path(itembank) %></td>
+        <td><%= link_to 'Destroy', itembank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Itembank', new_itembank_path %>

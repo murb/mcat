@@ -1,0 +1,25 @@
+<%= form_for(@itembank) do |f| %>
+  <% if @itembank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@itembank.errors.count, "error") %> prohibited this itembank from being saved:</h2>
+
+      <ul>
+      <% @itembank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br>
+    <%= f.file_field :source %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

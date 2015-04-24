@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @itembank.name %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @itembank.source %>
+</p>
+
+<%= link_to 'Edit', edit_itembank_path(@itembank) %> |
+<%= link_to 'Back', itembanks_path %>
