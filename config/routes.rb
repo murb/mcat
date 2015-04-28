@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'test/new', as: :new_test
+  get 'test/item/:id' => 'test#item', as: :test_item
+
   resources :responses
   resources :participants
   get 'participant/new'
@@ -10,7 +13,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'test#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

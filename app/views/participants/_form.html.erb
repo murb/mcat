@@ -2,9 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :session %>
-    <%= f.input :invite_hash %>
-    <%= f.input :participant_hash %>
+    <%= f.hidden_field :invite_hash, type: :hidden %>
     <%= f.input :age %>
     <%= f.input :gender %>
   </div>

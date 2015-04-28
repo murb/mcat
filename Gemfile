@@ -53,4 +53,5 @@ gem 'kramdown'
 gem 'email_validator'
 gem 'pg'
 gem 'devise'
-
+# gem 'rserve-client'
+# gem 'rinruby'

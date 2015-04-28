@@ -14,7 +14,8 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @response = Response.new
+    @item = Item.find(params[:item_id])
+    @response = Response.new(item_id: @item.id)
   end
 
   # GET /responses/1/edit
@@ -25,7 +26,7 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @response = Response.new(response_params)
-
+    @response.participant = current_participant
     respond_to do |format|
       if @response.save
         format.html { redirect_to @response, notice: 'Response was successfully created.' }

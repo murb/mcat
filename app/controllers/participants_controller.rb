@@ -14,7 +14,9 @@ class ParticipantsController < ApplicationController
 
   # GET /participants/new
   def new
-    @participant = Participant.new
+    session.destroy
+    invite_hash = params[:invite_hash].to_s
+    @participant = Participant.new(session: session.id, invite_hash: invite_hash)
   end
 
   # GET /participants/1/edit
@@ -24,11 +26,12 @@ class ParticipantsController < ApplicationController
   # POST /participants
   # POST /participants.json
   def create
-    @participant = Participant.new(participant_params)
+    @participant = Participant.new(participant_params.merge({session: session.id}))
+
 
     respond_to do |format|
       if @participant.save
-        format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
+        format.html { redirect_to new_test_path, notice: 'Participant was successfully created.' }
         format.json { render :show, status: :created, location: @participant }
       else
         format.html { render :new }
