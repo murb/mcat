@@ -3,9 +3,9 @@
 
   <h1><%=@item.instruction%></h1>
   <h3 class="subtitle"><%=@item.item_stem%></h3>
-  <div class="form-inputs">
     <%= f.hidden_field :item_id %>
-    <%= f.input :value %>
+    <div class="form-inputs radio-5">
+    <%= f.collection_radio_buttons :value, @item.choice_option_set.choice_options, :last,:first %>
   </div>
 
   <div class="form-actions">

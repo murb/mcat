@@ -1,3 +1,23 @@
 // Place all the styles related to the responses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-inputs.radio-5 {
+  width: 80%;
+  float: left;
+  margin: 4% 10%;
+  clear: both;
+
+
+  &> span {
+    width: 19.6%;
+    display: block;
+    float: left;
+    text-align: center;
+
+    label label {
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
