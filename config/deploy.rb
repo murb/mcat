@@ -47,16 +47,20 @@ set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/ca
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
 namespace :deploy do
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 3 do
+      execute :touch, release_path.join('tmp/restart.txt')
     end
   end
 
+  after :publishing, :restart
+
+  desc 'Show logs'
+  task :log do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :tail, " -n 100 #{shared_path}/log/production.log"
+    end
+  end
 end
