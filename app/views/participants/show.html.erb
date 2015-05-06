@@ -3,7 +3,10 @@
 <p>
   <strong>Session:</strong>
   <%= @participant.session %>
+  <em><%= (current_participant == @participant) ? "Huidige sessie!" : ""%></em>
 </p>
+
+<p><%= link_to "Antwoorden", responses_path(participant_hashes: @participant.participant_hash)%>
 
 <p>
   <strong>Invite hash:</strong>
@@ -24,6 +27,8 @@
   <strong>Gender:</strong>
   <%= @participant.gender %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_participant_path(@participant) %> |
 <%= link_to 'Back', participants_path %>

@@ -1,10 +1,16 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
+  before_action :set_itembank, only: [:create, :new]
 
   # GET /responses
   # GET /responses.json
   def index
-    @responses = Response.all
+    @responses = Response
+    if params["participant_hashes"]
+      puts "AAA"
+      @responses = @responses.filter_by_participant_hashes(params["participant_hashes"].split(","))
+    end
+    @responses = @responses.all
   end
 
   # GET /responses/1
@@ -14,7 +20,12 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @item = Item.find(params[:item_id])
+    @prev_eval_results = @itembank.evaluate(current_participant.responses,[1,1,1])
+    @item = @prev_eval_results[:next_item]
+    if params[:item_id]
+      @item = Item.find(params[:item_id])
+    end
+
     @response = Response.new(item_id: @item.id)
   end
 
@@ -29,7 +40,9 @@ class ResponsesController < ApplicationController
     @response.participant = current_participant
     respond_to do |format|
       if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
+        # @item = @response.item
+        eval_results = @itembank.evaluate(current_participant.responses,[1,1,1])
+        format.html { redirect_to new_response_path({item_id:eval_results[:next_item].id, eval_results:eval_results}), notice: 'Response was successfully created.' }
         format.json { render :show, status: :created, location: @response }
       else
         format.html { render :new }
@@ -66,6 +79,10 @@ class ResponsesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_response
       @response = Response.find(params[:id])
+    end
+
+    def set_itembank
+      @itembank = Itembank.first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

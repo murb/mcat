@@ -146,6 +146,7 @@ GEM
       json (~> 1.4)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rinruby (2.0.3)
     rspec-core (3.2.3)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.1)
@@ -243,6 +244,7 @@ DEPENDENCIES
   kramdown
   pg
   rails (= 4.2.1)
+  rinruby
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

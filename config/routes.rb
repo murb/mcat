@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :responses
   resources :participants
-  get 'participant/new'
+  #get 'participant/new'
 
   devise_for :admins
   devise_for :examinators
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'test#new'
+  root 'participants#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

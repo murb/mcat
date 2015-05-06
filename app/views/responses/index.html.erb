@@ -17,9 +17,8 @@
     <% @responses.each do |response| %>
       <tr>
         <td><%= response.participant_id %></td>
-        <td><%= response.item_id %></td>
-        <td><%= response.item_serialized %></td>
-        <td><%= response.value %></td>
+        <td><%= response.item.variable_name if response.item %></td>
+        <td><%= response.value %>(  <%= response.stat_value %>)</td>
         <td><%= link_to 'Show', response %></td>
         <td><%= link_to 'Edit', edit_response_path(response) %></td>
         <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>

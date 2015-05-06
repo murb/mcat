@@ -1,5 +1,21 @@
-<h1>New Response</h1>
-
+<div class="row">
+  <div class="large-12 columns">
 <%= render 'form' %>
 
-<%= link_to 'Back', responses_path %>
+
+<div class="panel">
+<h3>Debugpaneel</h3>
+Proefpersoon: <%= link_to current_participant.id, current_participant %>
+<% if @prev_eval_results%>
+<p>Resultaat van de evaluatie vóór deze vraag:</p>
+<pre>
+  Next item (wordt dus nu getoond): <%= @prev_eval_results[:next_item_index].inspect%>
+  Estimate: <%= @prev_eval_results[:estimate].inspect%>
+  Variance: <%= @prev_eval_results[:variance].inspect%>
+</pre>
+
+<p>Om tot deze vraag te komen werd de volgende antwoordenreeks verstuurd:<br/><small><%=current_participant.responses.to_stat_hash(@itembank.items)%></small></p>
+<% end %>
+</div>
+</div>
+</div>

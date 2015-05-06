@@ -4,8 +4,13 @@ class Response < ActiveRecord::Base
   belongs_to :participant
   belongs_to :item
 
+  scope :filter_by_participant_hashes, ->(a) { joins(:participant).where(participants:{participant_hash:a})}
+
   def item
-    Item.find(self.item_id)
+    begin
+      return Item.find(self.item_id)
+    rescue
+    end
   end
 
   def set_stat_value!
@@ -14,5 +19,15 @@ class Response < ActiveRecord::Base
 
   def serialize_item!
     self.item_serialized = item.serializable_hash(include: :choice_option_set)
+  end
+
+  class << self
+    def to_stat_hash(items)
+      rv = {}
+      self.all.each do |response|
+        rv[items.index(response.item_id)+1] = response.stat_value
+      end
+      return rv
+    end
   end
 end
