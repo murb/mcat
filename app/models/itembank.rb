@@ -69,9 +69,7 @@ class Itembank < ActiveRecord::Base
 
     r.administered = administered_and_responses.keys
     r.responses = administered_and_responses.values
-    puts "AAA"
-    p r.administered
-    p r.responses
+
     code = "result <- fire(administered, responses,estimate)\n"
     code += "t_next_item <- result$next_item\n"
     code += "t_estimate <- result$estimate\n"

@@ -20,10 +20,13 @@ class ResponsesController < ApplicationController
 
   # GET /responses/new
   def new
-    @prev_eval_results = @itembank.evaluate(current_participant.responses,[1,1,1])
-    @item = @prev_eval_results[:next_item]
-    if params[:item_id]
+    if current_participant.responses.count > 0
+      @prev_eval_results = @itembank.evaluate(current_participant.responses,[1,1,1])
+      @item = @prev_eval_results[:next_item]
+    elsif params[:item_id]
       @item = Item.find(params[:item_id])
+    else
+      @item = Item.first
     end
 
     @response = Response.new(item_id: @item.id)
