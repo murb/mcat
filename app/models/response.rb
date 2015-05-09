@@ -14,7 +14,7 @@ class Response < ActiveRecord::Base
   end
 
   def set_stat_value!
-    self.stat_value = item.reverse_scale? ? (-1 * value) + 6 : value
+    self.stat_value = item.reverse_scale? ? (-1 * (value)) + 5 : (value-1)
   end
 
   def serialize_item!
