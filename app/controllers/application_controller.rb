@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def current_participant
     @current_participant ||= Participant.find_by(session: session.id)
   end
+
+  def home
+
+  end
 end
