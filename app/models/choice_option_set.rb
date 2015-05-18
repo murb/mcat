@@ -3,6 +3,12 @@ class ChoiceOptionSet < ActiveRecord::Base
   has_many :items, primary_key: :choice_options_id
   store :choice_options
 
+
+
+  def text_for value
+    choice_options.keys[choice_options.values.index(value)]
+  end
+
   def choice_options= unparsed_txt
     choice_options_hash = {}
     if unparsed_txt.class == Hash

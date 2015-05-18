@@ -14,7 +14,7 @@ Proefpersoon: <%= link_to current_participant.id, current_participant %>
   Variance: <%= @prev_eval_results[:variance].inspect%>
 </pre>
 
-<p>Om tot deze vraag te komen werd de volgende antwoordenreeks verstuurd:<br/><small><%=current_participant.responses.to_stat_hash(@itembank.items)%></small></p>
+<p>Om tot deze vraag te komen werd de volgende antwoordenreeks verstuurd:<br/><small><%= current_participant.responses_to_stat_hash %></small></p>
 <% end %>
 </div>
 </div>

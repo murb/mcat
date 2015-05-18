@@ -39,9 +39,9 @@ class Itembank < ActiveRecord::Base
 
   #reload!; Itembank.first.evaluate({1=>2,41=>2}, [1,1,1])
   def evaluate(administered_and_responses, estimate)
-    if (administered_and_responses.class != Hash)
-      administered_and_responses = administered_and_responses.to_stat_hash(items)
-    end
+    # if (administered_and_responses.class != Hash)
+    #   administered_and_responses = administered_and_responses.to_stat_hash(items)
+    # end
     r = R
     begin
       r.eval("1+1")

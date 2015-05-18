@@ -1,32 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Responses</h1>
+<h1>Overzicht van antwoorden</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Participant</th>
-      <th>Item</th>
-      <th>Item serialized</th>
+      <th>ID</th>
+      <th>Itembank</th>
+      <th>Deelnemer</th>
+
+      <th>Vraag</th>
       <th>Value</th>
-      <th colspan="3"></th>
+      <th>Stat value</th>
     </tr>
   </thead>
 
   <tbody>
     <% @responses.each do |response| %>
       <tr>
-        <td><%= response.participant_id %></td>
-        <td><%= response.item.variable_name if response.item %></td>
-        <td><%= response.value %>(  <%= response.stat_value %>)</td>
-        <td><%= link_to 'Show', response %></td>
-        <td><%= link_to 'Edit', edit_response_path(response) %></td>
-        <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= response.id %></td>
+
+        <td><%= link_to response.itembank.name, response.itembank if response.itembank%></td>
+        <td><%= link_to response.participant_id, response.participant %></td>
+        <td><%= response.question %></td>
+        <td><%= response.text_value %> </td>
+        <td><%= response.stat_value %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Response', new_response_path %>

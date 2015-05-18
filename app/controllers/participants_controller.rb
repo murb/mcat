@@ -1,10 +1,19 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin_or_examinator!, only: [:index, :destroy, :edit, :update]
+
 
   # GET /participants
   # GET /participants.json
   def index
-    @participants = []# Participant.all
+    @participants = Participant
+    if current_admin
+      @participants = @participants.all
+    elsif current_examinator
+      @participants = @participants.for_examinator(current_examinator)
+    else
+      @participants = []
+    end
   end
 
   # GET /participants/1
@@ -26,7 +35,7 @@ class ParticipantsController < ApplicationController
   # POST /participants
   # POST /participants.json
   def create
-    @participant = Participant.new(participant_params.merge({session: session.id}))
+    @participant = Participant.new(participant_params.merge({session: session.id, itembank_id: Itembank.first.id}))
 
 
     respond_to do |format|
@@ -74,4 +83,9 @@ class ParticipantsController < ApplicationController
     def participant_params
       params.require(:participant).permit(:session, :invite_hash, :participant_hash, :age, :gender)
     end
+
+    def require_admin_or_examinator!
+      redirect_to root_path, notice: "U dient ingelogd te zijn als administrator of examinator van deze deelnemer." unless (current_admin or (current_examinator and (@participant.examinator == current_examinator or @participant.examinator.nil?)))
+    end
+
 end

@@ -1,5 +1,6 @@
 class ItembanksController < ApplicationController
   before_action :set_itembank, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /itembanks
   # GET /itembanks.json

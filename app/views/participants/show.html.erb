@@ -10,13 +10,23 @@
 
 <p>
   <strong>Invite hash:</strong>
-  <%= @participant.invite_hash %>
+  <%= link_to @participant.invite_hash, @participant.invite %>
 </p>
 
-<p>
-  <strong>Participant hash:</strong>
-  <%= @participant.participant_hash %>
-</p>
+<p><strong>Result:</strong></p>
+  <table>
+    <body>
+      <tr><th>Waardes</th>
+  <% @participant.evaluate[:estimate].each do |v|  %>
+      <td><%= v%></td>
+  <% end %>
+      </tr>
+      <tr><th>Variantie</th>
+  <% @participant.evaluate[:variance].each do |v|  %>
+      <td><%= v%></td>
+  <% end %>
+      </tr>
+  </table>
 
 <p>
   <strong>Age:</strong>
@@ -27,6 +37,19 @@
   <strong>Gender:</strong>
   <%= @participant.gender %>
 </p>
+
+<% if @participant.examinator.nil? and current_examinator %>
+  <%= simple_form_for(@participant) do |f| %>
+
+    <div class="form-inputs">
+      <%= f.hidden_field :invite_hash, type: :hidden, value: Invite.create(examinator_id: current_examinator.id).invite_hash %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Beschouw deze deelnemer als mijn genodigde", class: 'small button' %>
+    </div>
+  <% end %>
+<% end %>
 
 
 

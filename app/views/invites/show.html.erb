@@ -1,0 +1,32 @@
+
+
+
+<p>
+  <strong>Code:</strong>
+  <%= @invite.code %>
+</p>
+<p>
+  <strong>Comments:</strong>
+  <%= @invite.comments %>
+</p>
+
+<p>
+  <strong>Examinator:</strong>
+  <%= @invite.examinator.email if @invite.examinator %>
+</p>
+<% if @invite.participants.count > 0%>
+<h3>Deelnemers</h3>
+
+<table>
+<%= render @invite.participants %>
+</table>
+<p>Deze deelnemers zijn uitgenodigd met de volgende URL: </p>
+<div class="panel"><p><%= new_participant_url({invite_hash: @invite.invite_hash}) %></p></div>
+
+<% else %>
+<p>U kunt een nieuwe deelnemer uitnodigen met de volgende URL zodat uw codering en aantekeningen gekoppeld blijven aan de deelnemer(s) (u kunt de URL hergebruiken voor meerdere deelnemers)</p>
+<div class="panel"><p><%= new_participant_url({invite_hash: @invite.invite_hash}) %></p></div>
+<% end %>
+
+<%= link_to 'Edit', edit_invite_path(@invite) %> |
+<%= link_to 'Back', invites_path %>

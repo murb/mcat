@@ -1,13 +1,24 @@
 Rails.application.routes.draw do
+  resources :invites
   get 'test/new', as: :new_test
   get 'test/item/:id' => 'test#item', as: :test_item
+
+  get 'sign_out' => 'application#signout', as: :sign_out
 
   resources :responses
   resources :participants
   #get 'participant/new'
 
-  devise_for :admins
-  devise_for :examinators
+  # devise_for :admins
+
+  devise_for :admins, controllers: {
+    registrations: 'admins/registrations'
+  }
+  devise_for :examinators, controllers: {
+    registrations: 'examinators/registrations'
+  }
+
+
   resources :itembanks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

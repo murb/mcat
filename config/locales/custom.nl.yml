@@ -1,0 +1,88 @@
+nl:
+  routes:
+    books: boeken
+    new: nieuw
+    edit: bewerken
+    authors: auteurs
+    ingredients: ingredienten
+    cuisines: keukens
+    recipe_types: recept_types
+    recipes: recepten
+    users: gebruikers
+    courses: gangen
+    ratings: beoordelingen
+    password: wachtwoord
+    sign_in: inloggen
+    unlock: ontgrendel
+    sign_out: uitloggen
+    articles: artikelen
+    register: registreren
+    index_complete: index_compleet
+    edit_password: bewerk_wachtwoord
+  notifications:
+    welcome: Welkom bij heerlijk zoeken!
+  user_session:
+    destroy: "Uitloggen"
+    sign_up: "Aanmelden"
+    log_in: "Log in"
+  helpers:
+    submit:
+      user:
+        create: "Aanmelden"
+      recipe:
+        create: "Recept toevoegen"
+        update: "Recept bewerken"
+  activecontroller:
+    actions:
+      new: "Nieuw"
+  activerecord:
+    models:
+      participant: Deelnemer
+      response: Antwoord
+      user: Gebruiker
+      recipe: Recept
+      book: Boek
+    attributes:
+      participant:
+        age: Leeftijd
+        gender: Geslacht
+      book:
+        isbn: ISBN
+        title: Titel
+        subtitle: Subtitel
+        gbid: Source ID
+        status:
+          indexed: ✔ Geïndexeerd!
+          indexing_in_progress: Bezig met indexeren!
+          not_indexed: Niet geïndexeerd
+          partly_indexed: Gedeeltelijk geïndexeerd
+        book_of_the_year_year: Kookboek van het jaar uit het jaar
+        book_of_the_year_category: Kookboek van het jaar categorie
+        book_of_the_year_type: Kookboek van het jaar type
+      user:
+        login: Inloggen
+        password: Wachtwoord
+        current_password: Huidige wachtwoord
+        password_confirmation: 'Wachtwoord bevestiging'
+        newsletter: 'Ik wil de nieuwsbrief ontvangen'
+        first_name: 'Voornaam'
+        last_name: 'Achternaam'
+        city: 'Stad'
+        company_name: 'Bedrijfsnaam'
+      recipe:
+        cuisine: Keuken
+        page: Pagina
+        title: Naam
+        image: Afbeelding
+        remote_image_url: URL van afbeelding
+        upload_image: 'Afbeelding uploaden'
+        ingredient_tokens: Ingrediënten
+        course: Gang
+        ingredient: Ingredient
+        recipe_type: Recepttype
+        preparation_time: Bereidingstijd (minuten)
+        online_version_url: Online versie van het recept
+        recipe_type_course_and_cuisine_tokens: 'Recepttype (soep, salade), gang (diner, ontbijt) en/of keuken (Frans, Italiaans)'
+      article:
+        image: Afbeelding
+        banner: Banner afbeelding
