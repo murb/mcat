@@ -37,11 +37,8 @@ class Itembank < ActiveRecord::Base
     end
   end
 
-  #reload!; Itembank.first.evaluate({1=>2,41=>2}, [1,1,1])
   def evaluate(administered_and_responses, estimate)
-    # if (administered_and_responses.class != Hash)
-    #   administered_and_responses = administered_and_responses.to_stat_hash(items)
-    # end
+    # make sure R evironment is set up
     r = R
     begin
       r.eval("1+1")
@@ -53,14 +50,14 @@ class Itembank < ActiveRecord::Base
       puts "now it does!"
     end
 
-    # prepare
+    # prepare test-setup
     if (r.pull("rv <- if(exists(\"test\")[1]){1}else{0} ")) == 0.0
       alphas = items.alphas
       betas = items.betas
       r.eval("alphas <- t(matrix(c(#{alphas.join(", ")}), #{alphas[0].length}, #{alphas.length}));")
       r.eval("betas <- t(matrix(c(#{betas.join(",")}),   #{betas[0].length},  #{betas.length}));")
       r.eval("require(ShadowCAT);")
-      Itembank.prepare(r)
+      Itembank.define_rmethods(r)
       code = "init_result = initializeTestUnlessDefined(alphas, betas);\n"
       code += "test <- init_result$test;\n"
       code += "items <- init_result$items\n"
@@ -74,20 +71,23 @@ class Itembank < ActiveRecord::Base
     code += "t_next_item <- result$next_item\n"
     code += "t_estimate <- result$estimate\n"
     code += "t_variance <- result$variance\n"
+    code += "t_done <- (if(result$done) 1 else 0)\n"
     r.eval(code)
     next_item_index = r.t_next_item
-    return {next_item_index: next_item_index, next_item: items.all[next_item_index-1], estimate: r.t_estimate, variance: r.t_variance}
+    r_t_done = (r.t_done == 1) ? true : false
+    return {next_item_index: next_item_index, next_item: items.all[next_item_index-1], estimate: r.t_estimate, variance: r.t_variance, done: r_t_done}
   end
 
   class << self
-    def prepare(r=R)
-      r.eval <<"EOF"
+    def define_rmethods(r=R)
+      r.eval <<EOF
         initializeTestUnlessDefined <- function(alphas, betas) {
             items <<- initItembank("GRM", alphas, betas, silent = TRUE)
             # initiate test
-            test <<- initTest(items,
-                             start = list( type = 'random', n = 5),
-                             stop = list( type = 'length', n = 30),
+            test <- initTest(items,
+                             start = list( type = 'randomByDimension', n = 3, nByDimension = 1),
+                             stop = list( type = 'variance', target = .2),
+                             max_n = 30,
                              estimator = 'MAP',
                              selection = 'MI',
                              objective = 'PD')
@@ -108,7 +108,9 @@ class Itembank < ActiveRecord::Base
           person <- estimate(person, test)
           next_item <- next_item(person, test)
           variance <- attr(person$estimate, 'variance')
-          return(list(status = 0, estimate = person$estimate[1:3], variance = diag(variance), next_item = next_item))
+          done <- stop_test(person, test)
+
+          return(list(status = 0, estimate = person$estimate[1:3], variance = diag(variance), next_item = next_item, done = done))
         }
 EOF
     end
