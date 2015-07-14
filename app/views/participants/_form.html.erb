@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.hidden_field :invite_hash, type: :hidden %>
     <%= f.input :age %>
-    <%= f.input :gender %>
+    <%= f.collection_radio_buttons( :gender, [['M','Man'], ['F','Vrouw']], :first, :last) %>
   </div>
 
   <div class="form-actions">

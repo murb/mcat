@@ -21,7 +21,7 @@ To quickly boot up:
     ##
 
     #' @title Fire and Forget wrapper for multidimensional computerized adaptive testing with the shadow test procedure.
-    #' @author Karel Kroeze
+    #' @author Karel Kroeze, Maarten Brouwers
     #' @param administered, vector of indices of administered items.
     #' @param responses, vector of responses to administered items. Assumed to be sorted with administered.
     #' @return list of;
@@ -47,8 +47,9 @@ To quickly boot up:
 
       # initiate test
       test <- initTest(items,
-                       start = list( type = 'random', n = 5),
-                       stop = list( type = 'length', n = 30),
+                       start = list( type = 'randomByDimension', n = 3, nByDimension = 1),
+                       stop = list( type = 'variance', target = .2),
+                       max_n = 30
                        estimator = 'MAP',
                        selection = 'MI',
                        objective = 'PD')
@@ -66,6 +67,10 @@ To quickly boot up:
 
       # get next item
       next_item <- next_item(person, test)
+
+      # is test done? (boolean)
+      done <- stop_test(person, test)
+
       return(list(status = 0, estimate = person$estimate, variance = diag(attr(person$estimate, 'variance')), next_item = next_item))
     }
 
