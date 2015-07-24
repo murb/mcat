@@ -129,7 +129,6 @@ class Itembank < ActiveRecord::Base
 
     code = "result <- fire(administered, responses,estimate)\n"
     code += "t_next_item <- result$next_item\n"
-    code += "t_estimate_full <- result$estimate_full\n"
     code += "t_estimate <- result$estimate\n"
     code += "t_variance <- result$variance\n"
     code += "t_done <- (if(result$status) 1 else 0)\n"
@@ -140,12 +139,12 @@ class Itembank < ActiveRecord::Base
     r_t_score = nil
     puts "bassics derived"
     if r_t_done
-      r.eval "t_score <- c(#{r.t_estimate}.join(",")), \"#{Rails.root.join("config","lookup","copd","lookup.rda")}\""
+      code = "t_score <- calculateTscore(t_estimate, \"#{Rails.root.join("config","lookup","copd")}\", \"lookup.rda\")"
       r_t_score = r.t_score
       puts "T-test!"
     end
 
-    puts "returning!!"
+    puts "retunr"
 
     return {next_item_index: next_item_index, next_item: items.all[next_item_index-1], estimate: r.t_estimate, variance: r.t_variance, done: r_t_done, t_score: r_t_score}
   end
@@ -160,7 +159,7 @@ class Itembank < ActiveRecord::Base
           test <- initTest(items,
                            start = list( type = 'randomByDimension', n = 4, nByDimension = 1),
                            stop = list( type = 'variance', target = .2),
-                           max_n = 5,
+                           max_n = 30,
                            estimator = 'MAP',
                            selection = 'MI',
                            objective = 'PD')
@@ -168,26 +167,20 @@ class Itembank < ActiveRecord::Base
           return(list(items = items, test = test))
         }
 
-        calculateTscore <- function(estimate,filename) {
-          print("calculating T-score")
-
+        calculateTscore <- function(estimate,path,filename) {
           # load file, store name
-          name <- load(filename)
+          name <- load(paste0(path, filename))
           # rename lookup table
           lookup <- get(name)
           # remove original version
           do.call(rm, list(name))
 
           # find T score corresponding to closest theta score
-          print(estimate)
-
-          t_score <- numeric(length(estimate))
+          T_score <- numeric(length(estimate))
           for (i in 1:length(estimate)){
-            t_score[i] <- lookup[[i]][which.min(abs(estimate[i] - lookup[[i]][,1])),2]
+            T_score[i] <- lookup[[i]][which.min(abs(estimate[i] - lookup[[i]][,1])),2]
           }
-          print("Returinging T-score")
-          print(t_score)
-          return(c(t_score))
+          return(T_score)
         }
 
         fire <- function(administered, responses, estimate) {
@@ -206,7 +199,7 @@ class Itembank < ActiveRecord::Base
           variance <- attr(person$estimate, 'variance')
           done <- stop_test(person, test)
 
-          return(list(status = done, estimate = c(person$estimate), variance = c(diag(variance)), next_item = next_item))
+          return(list(status = done, estimate = person$estimate, variance = diag(variance), next_item = next_item))
         }
 EOF
     end
