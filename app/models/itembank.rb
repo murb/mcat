@@ -1,6 +1,6 @@
 class Itembank < ActiveRecord::Base
   mount_uploader :source, WorkbookUploader
-  #after_save :parse_items!
+  after_save :parse_items!
   has_many :items
   has_many :choice_option_sets, primary_key: :choice_options_id
   has_many :remappings
