@@ -43,15 +43,19 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @response = current_participant.init_response(response_params)
+    @item = @response.item
 
     respond_to do |format|
       if @response.save
-        # @item = @response.item
         # eval_results = current_participant.evaluate #@itembank.evaluate(current_participant.responses,[1,1,1])
         eval_results = current_participant.evaluate
-
-        format.html { redirect_to new_response_path({item_id:eval_results[:next_item].id, eval_results:eval_results}), notice: 'Response was successfully created.' }
-        format.json { render :show, status: :created, location: @response }
+        if eval_results[:done] == true
+          format.html { redirect_to participant_path(current_participant), notice: 'Vragenlijst is afgerond!' }
+          format.json { render :show, status: :finished, location: current_participant }
+        else
+          format.html { redirect_to new_response_path({item_id:eval_results[:next_item].id, eval_results:eval_results}), notice: 'Response was successfully created.' }
+          format.json { render :show, status: :created, location: @response }
+        end
       else
         format.html { render :new }
         format.json { render json: @response.errors, status: :unprocessable_entity }

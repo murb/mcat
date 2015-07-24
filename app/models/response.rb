@@ -1,10 +1,12 @@
 class Response < ActiveRecord::Base
+  validates :value, presence: true
   before_save :serialize_item!
   before_save :set_stat_value!
   belongs_to :participant
   belongs_to :item
   has_one :choice_option_set, through: :item
   has_one :itembank, through: :item
+
 
   scope :filter_by_participant_hashes, ->(a) { joins(:participant).where(participants:{participant_hash:a})}
 

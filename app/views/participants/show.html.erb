@@ -26,6 +26,11 @@
       <td><%= v%></td>
   <% end %>
       </tr>
+          <tr><th>T-score</th>
+      <% @participant.evaluate[:t_score].each do |v|  %>
+          <td><%= v%></td>
+      <% end %>
+          </tr>
   </table>
 
 <p>

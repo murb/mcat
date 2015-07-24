@@ -136,10 +136,11 @@ class Itembank < ActiveRecord::Base
     r.eval(code)
     next_item_index = r.t_next_item
     r_t_done = (r.t_done == 1) ? true : false
-    r_t_score = nil
+    r_t_score = []
     puts "bassics derived"
     if r_t_done
-      code = "t_score <- calculateTscore(t_estimate, \"#{Rails.root.join("config","lookup","copd")}\", \"lookup.rda\")"
+      code = "t_score <- calculateTscore(t_estimate, \"#{Rails.root.join("config","lookup","copd")}\", \"/lookup.rda\")"
+      r.eval(code)
       r_t_score = r.t_score
       puts "T-test!"
     end
@@ -159,7 +160,7 @@ class Itembank < ActiveRecord::Base
           test <- initTest(items,
                            start = list( type = 'randomByDimension', n = 4, nByDimension = 1),
                            stop = list( type = 'variance', target = .2),
-                           max_n = 30,
+                           max_n = 3,
                            estimator = 'MAP',
                            selection = 'MI',
                            objective = 'PD')
@@ -174,7 +175,6 @@ class Itembank < ActiveRecord::Base
           lookup <- get(name)
           # remove original version
           do.call(rm, list(name))
-
           # find T score corresponding to closest theta score
           T_score <- numeric(length(estimate))
           for (i in 1:length(estimate)){
@@ -199,7 +199,7 @@ class Itembank < ActiveRecord::Base
           variance <- attr(person$estimate, 'variance')
           done <- stop_test(person, test)
 
-          return(list(status = done, estimate = person$estimate, variance = diag(variance), next_item = next_item))
+          return(list(status = done, estimate = c(person$estimate), variance = diag(variance), next_item = next_item))
         }
 EOF
     end

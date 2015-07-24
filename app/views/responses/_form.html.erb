@@ -5,7 +5,7 @@
   <h3 class="subtitle"><%=@item.item_stem%></h3>
     <%= f.hidden_field :item_id %>
     <div class="form-inputs radio-5">
-    <%= f.collection_radio_buttons :value, @item.choice_option_set.choice_options, :last,:first %>
+    <%= f.collection_radio_buttons :value, @item.choice_option_set.choice_options, :last,:first, html5: true, required:true %>
   </div>
 
   <div class="form-actions">
