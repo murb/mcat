@@ -14,8 +14,15 @@ class Participant < ActiveRecord::Base
     "#{participant_hash}"
   end
 
+  def init_response response_params
+    responses.where(item_id:response_params[:item_id]).destroy_all
+    response = Response.new(response_params)
+    response.participant = self
+    response
+  end
+
   def evaluate
-    @evaluate ||= itembank.evaluate(responses_to_stat_hash,[1,1,1])
+    @evaluate ||= itembank.evaluate(responses_to_stat_hash,itembank.items.alphas.first.count.times.collect{1})
   end
 
   def responses_to_stat_hash

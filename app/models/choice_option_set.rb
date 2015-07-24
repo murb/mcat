@@ -3,7 +3,11 @@ class ChoiceOptionSet < ActiveRecord::Base
   has_many :items, primary_key: :choice_options_id
   store :choice_options
 
+  alias_attribute :cat, :choice_options
+  alias_attribute :antwoord_id, :choice_options_id
 
+  validates :choice_options, presence: true
+  validates :choice_options_id, presence: true
 
   def text_for value
     choice_options.keys[choice_options.values.index(value)]

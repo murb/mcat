@@ -42,8 +42,8 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = Response.new(response_params)
-    @response.participant = current_participant
+    @response = current_participant.init_response(response_params)
+
     respond_to do |format|
       if @response.save
         # @item = @response.item
