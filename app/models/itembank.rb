@@ -92,13 +92,24 @@ class Itembank < ActiveRecord::Base
 
       alphas = items.alphas
       betas = items.betas
+      code = ""
 
       alphas.each do |alpha|
-        r.eval("alpha_sequence <- c(alpha_sequence,#{alpha.join(",")})")
+        # code = ""
+        code += "alpha_sequence <- c(alpha_sequence,#{alpha.join(",")});\n"
+        if code.length > 5000
+          r.eval(code)
+          code = ""
+        end
       end
+      r.eval(code)
+      code = ""
+
       betas.each do |beta|
-        r.eval("beta_sequence <- c(beta_sequence,#{beta.join(",")})")
+        code += "beta_sequence <- c(beta_sequence,#{beta.join(",")});\n"
       end
+      r.eval(code)
+
       r.eval("alphas <- t(matrix(c(alpha_sequence), #{alphas[0].length}, #{alphas.length}));")
       r.eval("betas <- t(matrix(c(beta_sequence), #{betas[0].length},  #{betas.length}));")
 
@@ -132,7 +143,6 @@ class Itembank < ActiveRecord::Base
     code += "t_estimate <- result$estimate\n"
     code += "t_variance <- result$variance\n"
     code += "t_done <- (if(result$status) 1 else 0)\n"
-    puts code
     r.eval(code)
     next_item_index = r.t_next_item
     r_t_done = (r.t_done == 1) ? true : false

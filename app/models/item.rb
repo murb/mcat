@@ -24,7 +24,7 @@ class Item < ActiveRecord::Base
   alias_attribute :omcodering, :remapping_id
 
 
-  def betas(round_to=1)
+  def betas(round_to=2)
     # TODO: make variable amoutns of beta possible
     b1 = beta_1.round(round_to)
     b2 = beta_2 ? beta_2.round(round_to) : 0
@@ -33,7 +33,7 @@ class Item < ActiveRecord::Base
     [b1, b2] #, beta_3.round(round_to), beta_4.round(round_to)]
   end
 
-  def alphas(round_to=1)
+  def alphas(round_to=2)
     # TODO: make variable amounts of alpha possible
     #alpha_1 = ff_alpha ? ff_alpha : 0
     #alpha_2 = fat_alpha ? fat_alpha : 0
