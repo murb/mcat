@@ -110,12 +110,14 @@ class Itembank < ActiveRecord::Base
       end
       r.eval(code)
 
-      r.eval("alphas <- t(matrix(c(alpha_sequence), #{alphas[0].length}, #{alphas.length}));")
-      r.eval("betas <- t(matrix(c(beta_sequence), #{betas[0].length},  #{betas.length}));")
+      code = "alphas <- t(matrix(c(alpha_sequence), #{alphas[0].length}, #{alphas.length}));"
+      code += "betas <- t(matrix(c(beta_sequence), #{betas[0].length},  #{betas.length}));"
+      code += "require(ShadowCAT);"
+      r.eval(code)
+      code = ""
 
       puts "Alhpas en betas defined!"
 
-      r.eval("require(ShadowCAT);")
 
       Itembank.define_rmethods(r)
 
