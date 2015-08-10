@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :itembank
   belongs_to :choice_option_set, primary_key: :choice_options_id
+  belongs_to :remapping, primary_key: :mapping_id
 
   accepts_nested_attributes_for :choice_option_set
 

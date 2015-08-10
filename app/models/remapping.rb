@@ -13,6 +13,15 @@ class Remapping < ActiveRecord::Base
   validates :mapping, presence: true
   validates :mapping_id, presence: true
 
+  def remap unmapped_value
+    new_value = mapping[unmapped_value]
+    if new_value
+      return new_value.to_i
+    else
+      raise "mapping for #{unmapped_value} is out of bounds"
+    end
+  end
+
   def mapping= unparsed_txt
     mapping_hash = {}
     if unparsed_txt.class == Hash

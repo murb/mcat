@@ -6,6 +6,7 @@ class Response < ActiveRecord::Base
   belongs_to :item
   has_one :choice_option_set, through: :item
   has_one :itembank, through: :item
+  has_one :remapping, through: :item
 
 
   scope :filter_by_participant_hashes, ->(a) { joins(:participant).where(participants:{participant_hash:a})}
@@ -27,6 +28,7 @@ class Response < ActiveRecord::Base
 
   def set_stat_value!
     self.stat_value = item.reverse_scale? ? (-1 * (value)) + 5 : (value-1)
+    self.stat_value = remapping.remap(self.stat_value)
   end
 
   def serialize_item!
