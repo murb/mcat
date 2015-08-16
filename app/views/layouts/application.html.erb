@@ -35,6 +35,7 @@
               <li class="<%='active' if controller.class==InvitesController%>"><%= link_to 'Genodigden', invites_path %></li>
               <li class="<%='active' if controller.class==ItembanksController%>"><%= link_to 'Itembanks', itembanks_path %></li>
               <li class="<%='active' if controller.class==Examinators::RegistrationsController%>"><%= link_to 'Nieuwe examinator', new_examinator_registration_path %></li>
+              <li class=""><%= link_to 'Documentatie', '/docs' %></li>
             <% end %>
             <% if current_examinator %>
 

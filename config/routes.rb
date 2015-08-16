@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     registrations: 'examinators/registrations'
   }
 
+  get 'docs'=> 'application#docs'
 
   resources :itembanks
   # The priority is based upon order of creation: first created -> highest priority.
