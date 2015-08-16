@@ -22,6 +22,10 @@ class Response < ActiveRecord::Base
     "#{item.variable_name}: #{item.item_stem} #{item.reverse_scale ? '(Reversed)' : ''}" if item
   end
 
+  def itembank_id
+    itembank.id if itembank
+  end
+
   def text_value
     choice_option_set.text_for(value) if item
   end
@@ -40,7 +44,7 @@ class Response < ActiveRecord::Base
       items = participant.itembank.items
       rv = {}
       self.all.each do |response|
-        rv[items.index(response.item_id)+1] = response.stat_value
+        rv[items.index(response.item_id)+1] = response.stat_value if (response.item_id and items.index(response.item_id))
       end
       return rv
     end

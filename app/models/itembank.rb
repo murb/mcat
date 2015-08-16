@@ -158,8 +158,9 @@ class Itembank < ActiveRecord::Base
     end
 
     puts "retunr"
+    standard_error = r.t_variance.collect{|a| a ? Math.sqrt(a) : nil}
 
-    return {next_item_index: next_item_index, next_item: items.all[next_item_index-1], estimate: r.t_estimate, variance: r.t_variance, done: r_t_done, t_score: r_t_score}
+    return {next_item_index: next_item_index, next_item: items.all[next_item_index-1], estimate: r.t_estimate, variance: r.t_variance, done: r_t_done, t_score: r_t_score, se: standard_error}
   end
 
   class << self
@@ -172,7 +173,7 @@ class Itembank < ActiveRecord::Base
           test <- initTest(items,
                            start = list( type = 'randomByDimension', n = 4, nByDimension = 1),
                            stop = list( type = 'variance', target = .2),
-                           max_n = 3,
+                           max_n = 30,
                            estimator = 'MAP',
                            selection = 'MI',
                            objective = 'PD')

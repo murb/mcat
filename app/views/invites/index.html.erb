@@ -1,27 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Invites</h1>
-
+<h1>Uitnodigingen &amp; deelnemers</h1>
+<p>Om de resultaten van uw eigen deelnemers later gemakkelijk terug te vinden en hun gegevens in een keer te kunnen downloaden kunt u de deelnemer uitnodigen met een uniek voor deze toepassing gegenereerde sleutel.</p>
+<p>U kunt ook achteraf een deelnemer koppelen door hem of haar te vragen de resultaten naar u door te sturen, als ingelogde afnemer kunt u een nog niet aan een afnemer gekoppelde deelnemer toevoegen aan uw deelnemers.</p>
+<%= link_to 'Download de resultaten van deze patienten.', invites_path(format: :xlsx) %>
 <table>
   <thead>
     <tr>
-      <th>Hash</th>
-      <th>Comments</th>
+      <th>Sleutel</th>
+      <th>Code</th>
+      <th>Opmerkingen</th>
       <th>Examinator</th>
-      <th>Participant</th>
+      <th>Deelnemers</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @invites.each do |invite| %>
       <tr>
         <td><%= invite.invite_hash %></td>
+        <td><%= invite.code %></td>
         <td><%= invite.comments %></td>
-        <td><%= invite.examinator_id %></td>
-        <td><%= link_to 'Show', invite %></td>
-        <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
-        <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= invite.examinator_email %></td>
+        <td><ul><% invite.participants.each do |participant| %><li><%= link_to participant.short_hash, participant%></li><% end %></ul></td>
+        <td><%= link_to new_participant_url(invite_hash: invite.invite_hash), new_participant_url(invite_hash: invite.invite_hash)%></td>
+        <td><%= link_to 'Stel uitnodigingsmail op', "mailto:?body=#{url_encode(render(partial: 'invite_mail', locals: {full_link:new_participant_url(invite_hash: invite.invite_hash)}))}"%>
+        <td><%= link_to 'Verwijder uitnodiging', invite, method: :delete, data: { confirm: 'Wanneer u een uitnodiging verwijderd en een deelnemer maakt toch gebruik van de uitnodiging verliest u de koppeling met uw genodigde deelnemer.' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Invite', new_invite_path %>
+<%= link_to 'Maak een nieuwe uitnodiging', new_invite_path %>

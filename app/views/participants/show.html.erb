@@ -1,4 +1,84 @@
-<p id="notice"><%= notice %></p>
+
+<div class="right"><% if @participant.examinator.nil? and current_examinator %>
+  <%= simple_form_for(@participant) do |f| %>
+
+    <div class="form-inputs">
+      <%= f.hidden_field :invite_hash, type: :hidden, value: Invite.create(examinator_id: current_examinator.id).invite_hash %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Beschouw deze deelnemer als mijn genodigde", class: 'small button success' %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<h1>Score rapport</h1>
+<h3 class="subheader">Adaptieve kwaliteit van leven vragenlijst voor COPD</h3>
+<p>Deze vragenlijst bestrijkt vier domeinen die te maken hebben met kwaliteit van leven: vermoeidheid, impact van COPD-gerelateerde klachten, lichamelijk functioneren,en vermogen om aandeel te hebben in sociale rollen en activiteiten.</p>
+<p>De scores op deze vier domeinen zijn geschat op een schaal met een gemiddelde van 0 en een standaard deviatie van 1 (z-scores). Gemiddeld betekent hier: gemiddeld voor een COPD-patiënt.</p>
+<p>Patiënt X had de volgende scores (standaard meetfout tussen haakjes) op deze vier domeinen: </p>
+<ul>
+  <li><%= @participant.evaluate[:estimate][0].round(1) %> (<%= @participant.evaluate[:se][0].round(1) %>) op lichamelijk functioneren</li>
+  <li><%= @participant.evaluate[:estimate][1].round(1) %> (<%= @participant.evaluate[:se][1].round(1) %>) op vermoeidheid</li>
+  <li><%= @participant.evaluate[:estimate][2].round(1) %> (<%= @participant.evaluate[:se][2].round(1) %>) op vermogen om aandeel te hebben in sociale rollen en activiteiten</li>
+  <li><%= @participant.evaluate[:estimate][3].round(1) %> (<%= @participant.evaluate[:se][3].round(1) %>) op Impact van COPD-gerelateerde klachten</li>
+</ul>
+<p>De scores zijn hieronder weergegeven in een figuur.</p>
+<%= render partial: 'graph.svg'%>
+<h4>Toelichting bij de figuur</h4>
+<p>In de figuur ziet u op de x-as de vier domeinen, en op de y-as de z-score op deze domeinen. De scores zijn weergegeven met wiebertjes: hoe langer het wiebertje, hoe minder nauwkeurig de score geschat kon worden. Het kan voorkomen dat de schatting te onnauwkeurig is om serieus genomen te worden; in dat geval is het wiebertje erg lang en niet zwart ingekleurd.</p>
+<p>De lijn in het midden van de figuur geeft het gemiddelde weer; scores boven deze lijn zijn boven gemiddeld, en scores daaronder ondergemiddeld. De kleuren helpen u visueel bij het interpreteren: rood correspondeert met een relatief lage score, groen met een gemiddelde tot relatief hoge score. </p>
+
+<h4>Toelichting interpretatie van de score</h4>
+<p>Een hogere score betekent voor alle domeinen een betere kwaliteit van leven. Een relatief hoge score op het domein vermoeidheid betekent dus dat de patiënt relatief weinig vermoeidheidsklachten ervaart. Dit maakt het makkelijker om de figuur te interpreteren.</p>
+<p>U kunt de z-score gebruiken om de scores van patiënten onderling te vergelijken, maar ook om de voortgang bij een specifieke patiënt in kaart te brengen.</p>
+
+<a href="#" data-reveal-id="meerInformatie" class="button">Meer informatie over het onderzoek</a>
+
+<div id="meerInformatie" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Meer informatie over het onderzoek</h2>
+<h4>Normgroep en verdeling van scores</h4>
+<p>Wij hebben de normering gebaseerd op een groep van 500 COPD-patiënten afkomstig uit heel Nederland, uit de eerste, tweede en derde lijn. Er zijn op dit moment geen aparte normen beschikbaar voor subgroepen (man/vrouw, GOLD stadium). De z-score verdelingen voor de vier domeinen zien er voor de normgroep als volgt uit:</p>
+
+VIER PLAATJES
+
+<p>Vergelijken van de domeinscores met scores op bestaande tests</p>
+<p>Zoals te zien is, zijn z-scores niet per definitie normaal verdeeld. De verdeling hangt af van de populatie/steekproef. Dit betekent ook dat een z-score op een test niet direct kan worden vergeleken met een z-score op een andere test. Om vergelijking mogelijk te maken, kan men gebruik maken van T-scores. Om van z-scores T-scores te maken wordt gebruik gemaakt van een zogenaamde normaliserende transformatie. T-scores zijn dus normaal verdeeld, met een gemiddelde van 50 en een standaard deviatie van 10. De T-scores van patiënt X zijn:</p>
+<ul>
+<li>XX (SE) op fysiek functioneren</li>
+<li>XX (SE) op vermoeidheid</li>
+<li>XX (SE) op sociale rollen en activiteiten</li>
+<li>XX (SE) op impact van COPD</li>
+</ul>
+
+<h4>Toelichting schatting van scores
+<p>De vragenlijst is op een adaptieve wijze afgenomen. Dit houdt in dat niet alle patiënten dezelfde vragen beantwoorden, maar alleen die vragen die voor hen relevant zijn. Die relevantie wordt gebaseerd op hun antwoordpatroon. Als een patiënt “heel erg” antwoord op een vraag, is de vervolgvraag een andere dan wanneer hij/zij “helemaal niet” zou antwoorden. </p>
+<p>Op de achtergrond loopt een wiskundig algoritme mee, dat is gebaseerd op een statistisch model. Wij hebben gekozen om gebruik te maken van een multidimensioneel Item Respons Theorie (IRT) model: het Graded Response Model. Dit model relateert het antwoord wat door de patiënt wordt gegeven op een specifieke vraag aan een schatting van zijn/haar positie op de vier domeinen. We zijn uitgegaan van een zogenaamd “ simple structure” model, waarbij vragen zijn toegewezen aan een specifiek domein. De multidimensionaliteit zit hem in de correlaties tussen de domeinen: in dit IRT model is rekening gehouden met de samenhang tussen de vier domeinen, om zo de schattingen nog nauwkeuriger te maken. </p>
+<p>De steekproef die is gebruikt voor de normering is ook gebruikt voor het schatten van de IRT parameters van de vragen. Deze worden gebruikt in het algoritme van de adaptieve test. Dit maakt het mogelijk om scores van patiënten te vergelijken, ook als ze niet dezelfde vragen hebben beantwoord.</p>
+<p>Het IRT model is geschat met behulp van het mirt package in het software programma R, zo ook in het MIRT pakket ontwikkeld door Cees Glas (de pakketten leveren aanvullende resultaten op).</p>
+
+<h4>Aanvullende informatie</h4>
+<p>Deze CAT is tot stand gekomen in samenwerking met PROMIS Nederland, zie voor meer informatie <a href="http://www.dutchflemishpromis.nl">dutchflemishpromis.nl</a>.</p>
+
+<p>Voor meer informatie over het berekenen en interpreteren van T-scores verwijzen we u naar de volgende boeken: </p>
+<p>Spitz, J. C. (1971). <em>Statistiek voor Psychologen, Pedagogen, Sociologen.</em> Amsterdam/Brussel: Agon Elsevier.<br/>
+Drenth, P. J. D., & Sijtsma, K. (2006). <em>Testtheorie: Inleiding in de theorie van de psychologische test en zijn toepassingen</em> (4 ed.). Houten: Bohn Stafleu van Loghum.</p>
+
+<p>Voor meer informatie over IRT en CAT verwijzen we u naar de volgende boeken:</p>
+<p>Embretson, S. E., & Reise, S. (2000). <em>Item response theory for psychologists</em>. Mahwah, NJ: Erlbaum.<br/>
+Van der Linden, W. J., & Glas, C. A. W. (Eds.). (2000). <em>Computerized Adaptive Testing: Theory and Practice</em>. Dordrecht: Kluwer Academic Publishers.<br/>
+Veldkamp, B.P. & van der Linden, W.J. (2002). <em>Multidimensional constrained adaptive testing</em>. Psychometrika, 67, 575-588.</p>
+
+<p>Voor meer informatie over de selectie van de vier domeinen verwijzen we u naar de volgende artikelen:</p>
+<p>Paap, M. C. S., Bode, C., Lenferink, L. I. M., Groen, L. C., Terwee, C. B., Ahmed, S., ... van der Palen, J. (2014). Identifying key domains of health-related quality of life for patients with Chronic Obstructive Pulmonary Disease: the patient perspective. <em>Health Qual Life Outcomes</em>, 12(1), 106.<br/>
+Paap, M. C. S., Bode, C., Lenferink, L. I. M., Terwee, C. B., & van der Palen, J. (2015). Identifying key domains of health-related quality of life for patients with chronic obstructive pulmonary disease: interviews with healthcare professionals. <em>Quality of Life Research</em>, 24(6), 1351-1367. </p>
+
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+
+<div class="panel debug">
 
 <p>
   <strong>Session:</strong>
@@ -42,21 +122,9 @@
   <strong>Gender:</strong>
   <%= @participant.gender %>
 </p>
-
-<% if @participant.examinator.nil? and current_examinator %>
-  <%= simple_form_for(@participant) do |f| %>
-
-    <div class="form-inputs">
-      <%= f.hidden_field :invite_hash, type: :hidden, value: Invite.create(examinator_id: current_examinator.id).invite_hash %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Beschouw deze deelnemer als mijn genodigde", class: 'small button' %>
-    </div>
-  <% end %>
-<% end %>
+</div>
 
 
 
-<%= link_to 'Edit', edit_participant_path(@participant) %> |
-<%= link_to 'Back', participants_path %>
+
+<%#= link_to 'Bewerk deze deelnemer', edit_participant_path(@participant) %>

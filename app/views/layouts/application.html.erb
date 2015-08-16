@@ -17,7 +17,7 @@
       <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
           <li class="name">
-            <h1><a href="#"><em>ut</em>CAT</a></h1>
+            <h1><a href="/">Kwaliteit van leven bij COPD</a></h1>
           </li>
            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
           <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -32,29 +32,45 @@
 
           <ul class="left">
             <% if current_admin %>
-              <li class=""><%= link_to 'Respondenten', participants_path %></li>
-              <li class=""><%= link_to 'Itembanks', itembanks_path %></li>
-              <li class=""><%= link_to 'Nieuwe examinator', new_examinator_registration_path %></li>
+              <li class="<%='active' if controller.class==InvitesController%>"><%= link_to 'Genodigden', invites_path %></li>
+              <li class="<%='active' if controller.class==ItembanksController%>"><%= link_to 'Itembanks', itembanks_path %></li>
+              <li class="<%='active' if controller.class==Examinators::RegistrationsController%>"><%= link_to 'Nieuwe examinator', new_examinator_registration_path %></li>
             <% end %>
             <% if current_examinator %>
-              <li class=""><%= link_to 'Genodigden', invites_path %></li>
+
+              <li class="<%='active' if controller.class==InvitesController%>"><%= link_to 'Genodigden', invites_path %></li>
             <% end %>
           </ul>
         </section>
       </nav>
+    <% else %>
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/">Kwaliteit van leven bij COPD</a></h1>
+          </li>
+        </ul>
+      </nav>
     <% end %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="row">
-      <div class="large-12 columns">
-         <%= yield %>
+    <% if notice %>
+    <div data-alert class="alert-box notice success"><%= notice %><a href="#" class="close">&times;</a></div>
+    <% end %>
+    <% if alert %>
+    <div data-alert class="alert-box alert"><%= alert %><a href="#" class="close">&times;</a></div>
+    <% end %>
+    <div class="main">
+      <div class="row">
+        <div class="large-12 columns">
+           <%= yield %>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="large-12 columns"><small>
         <% unless current_examinator %><%= link_to 'Log in als examinator', new_examinator_session_path %><% end %><%unless current_admin or current_examinator%> | <% end%><% unless current_admin %><%= link_to 'Log in als administrator', new_admin_session_path %><% end %>
       </small>
+      <%= image_tag "unitwentelongfonds.png", style: "width: 314px; height: 114px; margin-top: -1em; margin-bottom: 1em; float: right"%>
+
     </div>
     </div>
   </body>

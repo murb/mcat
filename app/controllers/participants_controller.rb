@@ -40,7 +40,7 @@ class ParticipantsController < ApplicationController
 
     respond_to do |format|
       if @participant.save
-        format.html { redirect_to new_test_path, notice: 'Participant was successfully created.' }
+        format.html { redirect_to new_test_path, notice: 'Je gegevens zijn vastgelegd, begin de test!' }
         format.json { render :show, status: :created, location: @participant }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class ParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @participant.update(participant_params)
-        format.html { redirect_to @participant, notice: 'Participant was successfully updated.' }
+        format.html { redirect_to @participant, notice: 'De deelnemer is bijgewerkt.' }
         format.json { render :show, status: :ok, location: @participant }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class ParticipantsController < ApplicationController
   def destroy
     @participant.destroy
     respond_to do |format|
-      format.html { redirect_to participants_url, notice: 'Participant was successfully destroyed.' }
+      format.html { redirect_to participants_url, notice: 'Participant is verwijderd.' }
       format.json { head :no_content }
     end
   end

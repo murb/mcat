@@ -1,6 +1,7 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show, :edit, :update, :destroy]
   before_action :own_invite_only, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin_or_examinator!
 
   # GET /invites
   # GET /invites.json
@@ -11,6 +12,14 @@ class InvitesController < ApplicationController
       @invites = Invite.all
     else
       @invites = []
+    end
+
+    respond_to do |format|
+      format.xlsx {
+        w = @invites.to_workbook
+        send_data  w.stream_xlsx, :filename => "responses #{Time.now}.xlsx"
+      }
+      format.html {}
     end
   end
 
@@ -39,7 +48,7 @@ class InvitesController < ApplicationController
 
     respond_to do |format|
       if @invite.save
-        format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
+        format.html { redirect_to @invite, notice: 'De uitnodiging is aangemaakt.' }
         format.json { render :show, status: :created, location: @invite }
       else
         format.html { render :new }
@@ -53,7 +62,7 @@ class InvitesController < ApplicationController
   def update
     respond_to do |format|
       if @invite.update(invite_params)
-        format.html { redirect_to @invite, notice: 'Invite was successfully updated.' }
+        format.html { redirect_to @invite, notice: 'De uitnodiging is bijgewerkt.' }
         format.json { render :show, status: :ok, location: @invite }
       else
         format.html { render :edit }
@@ -67,7 +76,7 @@ class InvitesController < ApplicationController
   def destroy
     @invite.destroy
     respond_to do |format|
-      format.html { redirect_to invites_url, notice: 'Invite was successfully destroyed.' }
+      format.html { redirect_to invites_url, notice: 'De uitnodiging is verwijderd.' }
       format.json { head :no_content }
     end
   end

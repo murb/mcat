@@ -53,7 +53,7 @@ class ResponsesController < ApplicationController
           format.html { redirect_to participant_path(current_participant), notice: 'Vragenlijst is afgerond!' }
           format.json { render :show, status: :finished, location: current_participant }
         else
-          format.html { redirect_to new_response_path({item_id:eval_results[:next_item].id, eval_results:eval_results}), notice: 'Response was successfully created.' }
+          format.html { redirect_to new_response_path({item_id:eval_results[:next_item].id, eval_results:eval_results}) }
           format.json { render :show, status: :created, location: @response }
         end
       else
@@ -68,7 +68,7 @@ class ResponsesController < ApplicationController
   # def update
   #   respond_to do |format|
   #     if @response.update(response_params)
-  #       format.html { redirect_to @response, notice: 'Response was successfully updated.' }
+  #       format.html { redirect_to @response, notice: 'Response is bijgewerkt.' }
   #       format.json { render :show, status: :ok, location: @response }
   #     else
   #       format.html { render :edit }
@@ -82,7 +82,7 @@ class ResponsesController < ApplicationController
   # def destroy
   #   @response.destroy
   #   respond_to do |format|
-  #     format.html { redirect_to responses_url, notice: 'Response was successfully destroyed.' }
+  #     format.html { redirect_to responses_url, notice: 'Response is verwijderd.' }
   #     format.json { head :no_content }
   #   end
   # end

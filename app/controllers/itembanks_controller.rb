@@ -29,7 +29,7 @@ class ItembanksController < ApplicationController
 
     respond_to do |format|
       if @itembank.save
-        format.html { redirect_to @itembank, notice: 'Itembank was successfully created.' }
+        format.html { redirect_to @itembank, notice: 'Itembank is aangemaakt.' }
         format.json { render :show, status: :created, location: @itembank }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ItembanksController < ApplicationController
   def update
     respond_to do |format|
       if @itembank.update(itembank_params)
-        format.html { redirect_to @itembank, notice: 'Itembank was successfully updated.' }
+        format.html { redirect_to @itembank, notice: 'Itembank is bijgewerkt.' }
         format.json { render :show, status: :ok, location: @itembank }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class ItembanksController < ApplicationController
   def destroy
     @itembank.destroy
     respond_to do |format|
-      format.html { redirect_to itembanks_url, notice: 'Itembank was successfully destroyed.' }
+      format.html { redirect_to itembanks_url, notice: 'Itembank is verwijderd.' }
       format.json { head :no_content }
     end
   end
