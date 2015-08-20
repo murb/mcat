@@ -29,9 +29,11 @@ class Item < ActiveRecord::Base
     # TODO: make variable amoutns of beta possible
     b1 = beta_1.round(round_to)
     b2 = beta_2 ? beta_2.round(round_to) : 0
+    b3 = beta_3 ? beta_3.round(round_to) : 0
+    b4 = beta_4 ? beta_4.round(round_to) : 0
     # beta_3 = [ff_beta3,fat_beta3,soc_beta3].compact.first
     # beta_4 = [ff_beta4,fat_beta4,soc_beta4].compact.first
-    [b1, b2] #, beta_3.round(round_to), beta_4.round(round_to)]
+    [b1, b2, b3, b4] #, beta_3.round(round_to), beta_4.round(round_to)]
   end
 
   def alphas(round_to=2)

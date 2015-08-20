@@ -2,7 +2,7 @@ class Itembank < ActiveRecord::Base
   mount_uploader :source, WorkbookUploader
   after_save :parse_items!
   has_many :items
-  has_many :choice_option_sets, primary_key: :choice_options_id
+  has_many :choice_option_sets
   has_many :remappings
 
   def source_as_workbook
@@ -107,10 +107,15 @@ class Itembank < ActiveRecord::Base
 
       betas.each do |beta|
         code += "beta_sequence <- c(beta_sequence,#{beta.join(",")});\n"
+        if code.length > 5000
+          r.eval(code)
+          code = ""
+        end
       end
       r.eval(code)
 
       code = "alphas <- t(matrix(c(alpha_sequence), #{alphas[0].length}, #{alphas.length}));"
+
       code += "betas <- t(matrix(c(beta_sequence), #{betas[0].length},  #{betas.length}));"
       code += "require(ShadowCAT);"
       r.eval(code)

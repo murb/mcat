@@ -31,7 +31,7 @@ class Response < ActiveRecord::Base
   end
 
   def set_stat_value!
-    self.stat_value = item.reverse_scale? ? (-1 * (value)) + 5 : (value-1)
+    self.stat_value = item.reverse_scale? ? (-1 * (value)) + 4 : (value)
     self.stat_value = remapping.remap(self.stat_value)
   end
 
