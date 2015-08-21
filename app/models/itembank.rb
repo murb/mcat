@@ -77,12 +77,15 @@ class Itembank < ActiveRecord::Base
     r = R
     begin
       r.eval("1+1")
+      r.eval("test_var <- 2")
+      r.test_var
       puts "R functions"
     rescue Errno::EPIPE
-      puts "no functioning:"
+      puts "not functioning:"
       r=RinRuby.new
-      puts r.eval("1+1")
-      puts "now it does!"
+    rescue NoMethodError
+      puts "not functioning:"
+      r=RinRuby.new
     end
 
     # prepare test-setup
@@ -151,10 +154,11 @@ class Itembank < ActiveRecord::Base
     code += "t_variance <- result$variance\n"
     code += "t_done <- (if(result$status) 1 else 0)\n"
     r.eval(code)
+
     next_item_index = r.t_next_item
     r_t_done = (r.t_done == 1) ? true : false
     r_t_score = []
-    puts "bassics derived"
+    puts "basics derived"
     if r_t_done
       code = "t_score <- calculateTscore(t_estimate, \"#{Rails.root.join("config","lookup","copd")}\", \"/lookup.rda\")"
       r.eval(code)

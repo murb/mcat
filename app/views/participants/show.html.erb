@@ -16,7 +16,7 @@
 <h3 class="subheader">Adaptieve kwaliteit van leven vragenlijst voor COPD</h3>
 <p>Deze vragenlijst bestrijkt vier domeinen die te maken hebben met kwaliteit van leven: vermoeidheid, impact van COPD-gerelateerde klachten, lichamelijk functioneren,en vermogen om aandeel te hebben in sociale rollen en activiteiten.</p>
 <p>De scores op deze vier domeinen zijn geschat op een schaal met een gemiddelde van 0 en een standaard deviatie van 1 (z-scores). Gemiddeld betekent hier: gemiddeld voor een COPD-patiënt.</p>
-<p>Patiënt X had de volgende scores (standaard meetfout tussen haakjes) op deze vier domeinen: </p>
+<p>Patiënt <%=@participant.short_hash%> had de volgende scores (standaard meetfout tussen haakjes) op deze vier domeinen: </p>
 <ul>
   <li><%= @participant.evaluate[:estimate][0].round(1) %> (<%= @participant.evaluate[:se][0].round(1) %>) op lichamelijk functioneren</li>
   <li><%= @participant.evaluate[:estimate][1].round(1) %> (<%= @participant.evaluate[:se][1].round(1) %>) op vermoeidheid</li>
@@ -26,28 +26,28 @@
 <p>De scores zijn hieronder weergegeven in een figuur.</p>
 <%= render partial: 'graph.svg'%>
 <h4>Toelichting bij de figuur</h4>
-<p>In de figuur ziet u op de x-as de vier domeinen, en op de y-as de z-score op deze domeinen. De scores zijn weergegeven met wiebertjes: hoe langer het wiebertje, hoe minder nauwkeurig de score geschat kon worden. Het kan voorkomen dat de schatting te onnauwkeurig is om serieus genomen te worden; in dat geval is het wiebertje erg lang en niet zwart ingekleurd.</p>
+<p>In de figuur ziet u op de x-as de vier domeinen, en op de y-as de z-score op deze domeinen. De scores zijn weergegeven met wiebertjes: hoe langer het wiebertje, hoe minder nauwkeurig de score geschat kon worden. Het kan voorkomen dat de schatting te onnauwkeurig is om serieus genomen te worden; in dat geval is er geen wit wiebertje afgebeeld voor het betreffende domein, maar een lange doorzichtige ovaal.</p>
 <p>De lijn in het midden van de figuur geeft het gemiddelde weer; scores boven deze lijn zijn boven gemiddeld, en scores daaronder ondergemiddeld. De kleuren helpen u visueel bij het interpreteren: rood correspondeert met een relatief lage score, groen met een gemiddelde tot relatief hoge score. </p>
 
 <h4>Toelichting interpretatie van de score</h4>
 <p>Een hogere score betekent voor alle domeinen een betere kwaliteit van leven. Een relatief hoge score op het domein vermoeidheid betekent dus dat de patiënt relatief weinig vermoeidheidsklachten ervaart. Dit maakt het makkelijker om de figuur te interpreteren.</p>
 <p>U kunt de z-score gebruiken om de scores van patiënten onderling te vergelijken, maar ook om de voortgang bij een specifieke patiënt in kaart te brengen.</p>
 
-<a href="#" data-reveal-id="meerInformatie" class="button">Meer informatie over het onderzoek</a>
+<a href="#" data-reveal-id="meerInformatie" class="button">Extra toelichting: normgroep, T-scores en schattingsprocedure</a>
 
 <div id="meerInformatie" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <h2 id="modalTitle">Meer informatie over het onderzoek</h2>
+  <h2 id="modalTitle">Extra toelichting: normgroep, T-scores en schattingsprocedure</h2>
 <h4>Normgroep en verdeling van scores</h4>
-<p>Wij hebben de normering gebaseerd op een groep van 500 COPD-patiënten afkomstig uit heel Nederland, uit de eerste, tweede en derde lijn. Er zijn op dit moment geen aparte normen beschikbaar voor subgroepen (man/vrouw, GOLD stadium). De z-score verdelingen voor de vier domeinen zien er voor de normgroep als volgt uit:</p>
+<p>Wij hebben de normering gebaseerd op een groep van 668 COPD-patiënten afkomstig uit heel Nederland, uit de eerste, tweede en derde lijn. Er zijn op dit moment geen aparte normen beschikbaar voor subgroepen (man/vrouw, GOLD stadium). De z-score verdelingen voor de vier domeinen zien er voor de normgroep als volgt uit:</p>
 
 <%=image_tag 'all.png', style: 'width: 100%'%>
-<p>Vergelijken van de domeinscores met scores op bestaande tests</p>
+<h5>Vergelijken van de domeinscores met scores op bestaande tests</h5>
 <p>Zoals te zien is, zijn z-scores niet per definitie normaal verdeeld. De verdeling hangt af van de populatie/steekproef. Dit betekent ook dat een z-score op een test niet direct kan worden vergeleken met een z-score op een andere test. Om vergelijking mogelijk te maken, kan men gebruik maken van T-scores. Om van z-scores T-scores te maken wordt gebruik gemaakt van een zogenaamde normaliserende transformatie. T-scores zijn dus normaal verdeeld, met een gemiddelde van 50 en een standaard deviatie van 10. De T-scores van patiënt X zijn:</p>
 <ul>
-<li>XX (SE) op fysiek functioneren</li>
-<li>XX (SE) op vermoeidheid</li>
-<li>XX (SE) op sociale rollen en activiteiten</li>
-<li>XX (SE) op impact van COPD</li>
+  <li><%= @participant.evaluate[:t_score][0].round(1) %> (<%= @participant.evaluate[:se][0].round(1) %>) op lichamelijk functioneren</li>
+  <li><%= @participant.evaluate[:t_score][1].round(1) %> (<%= @participant.evaluate[:se][1].round(1) %>) op vermoeidheid</li>
+  <li><%= @participant.evaluate[:t_score][2].round(1) %> (<%= @participant.evaluate[:se][2].round(1) %>) op vermogen om aandeel te hebben in sociale rollen en activiteiten</li>
+  <li><%= @participant.evaluate[:t_score][3].round(1) %> (<%= @participant.evaluate[:se][3].round(1) %>) op Impact van COPD-gerelateerde klachten</li>
 </ul>
 
 <h4>Toelichting schatting van scores
