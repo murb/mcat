@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1 id="readme">README</h1>
+
+<h2 id="ruby-version">Ruby version</h2>
+
+<p>Tested on 2.1</p>
+
+<h2 id="system-dependencies">System dependencies</h2>
+
+<p>R version &gt;3</p>
+
+<p><a href="https://github.com/karel-kroeze/ShadowCAT">ShadowCat</a> can be installed as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_install'>install</span><span class='period'>.</span><span class='id identifier rubyid_packages'>packages</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>devtools</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_library'>library</span><span class='lparen'>(</span><span class='id identifier rubyid_devtools'>devtools</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_install_github'>install_github</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Karel-Kroeze/MultiGHQuad</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_install_github'>install_github</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Karel-Kroeze/ShadowCAT</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<p>To quickly boot up:</p>
+
+<pre class="code ruby"><code class="ruby">##
+
+#&#39; @title Fire and Forget wrapper for multidimensional computerized adaptive testing with the shadow test procedure.
+#&#39; @author Karel Kroeze, Maarten Brouwers
+#&#39; @param administered, vector of indices of administered items.
+#&#39; @param responses, vector of responses to administered items. Assumed to be sorted with administered.
+#&#39; @return list of;
+#&#39; status; status code.
+#&#39; estimate; vector/numeric of estimates per dimension
+#&#39; variance; matrix/numeric variance/covariance matrix
+#&#39; next_item; index for the next item to be presented
+MCAT &lt;- function(administered, responses, estimate) {
+  # Make sure prerequisites are loaded.
+  require(ShadowCAT)
+
+  # set up required objects (with presets to MCAT-COPD).
+  # set a seed to load a fixed bank.
+  set.seed(1)
+  # load a test itembank.
+  items &lt;- createTestBank(&quot;GRM&quot;, K = 200, Q = 4, M = 7, between = TRUE)
+
+  # initiate person
+  person &lt;- initPerson(items, prior = matrix(c(1,.5,.5,.5,
+                                               .5,1,.5,.5,
+                                               .5,.5,1,.5,
+                                               .5,.5,.5,1),4,4))
+
+  # initiate test
+  test &lt;- initTest(items,
+                   start = list( type = &#39;randomByDimension&#39;, n = 3, nByDimension = 1),
+                   stop = list( type = &#39;variance&#39;, target = .2),
+                   max_n = 30
+                   estimator = &#39;MAP&#39;,
+                   selection = &#39;MI&#39;,
+                   objective = &#39;PD&#39;)
+
+  # insert admin + responses.
+  person$administered &lt;- administered
+  person$responses &lt;- responses
+  person$available &lt;- person$available[-person$administered]
+
+  # set previous estimate
+  person$estimate &lt;- estimate
+
+  # get estimate
+  person &lt;- estimate(person, test)
+
+  # get next item
+  next_item &lt;- next_item(person, test)
+
+  # is test done? (boolean)
+  done &lt;- stop_test(person, test)
+
+  return(list(status = 0, estimate = person$estimate, variance = diag(attr(person$estimate, &#39;variance&#39;)), next_item = next_item))
+}
+
+
+
+#&#39; createTestBank
+#&#39;
+#&#39; Creates a test bank. Temporary fix until we have a set itembank.
+#&#39; TODO: update with real itembank, remove code.
+createTestBank &lt;- function(model, K = 50, Q = 1, M = 4, between = FALSE){
+  # 3PLM is dichotomous by definition
+  if (model == &quot;3PLM&quot;) M &lt;- 1
+
+  # make sure the number of items is divisible by the number of dimensions
+  if (between) K &lt;- ceiling(K/Q) * Q
+
+  # set up alpha, very rough uniform from .3 to 1.5
+  alpha &lt;- matrix(runif(K * Q, .3, 1.5), K, Q)
+
+  # if between, force items to load on one dimension each.
+  if (between){
+    set = K / Q
+    for (i in 1:Q){
+      alpha[((i-1)*set+1):(i*set), (1:Q)[-i]] &lt;- 0
+    }
+  }
+
+  # spread polytomous items cats -2 to +2.
+  spread &lt;- seq(-2,2,length.out=M)
+
+  # base loading for items
+  beta &lt;- matrix(rnorm(K), K, 1)
+
+  # apply spread for polytomous, betas are strictly monotously increasing because the spread is.
+  # apply transposes the matrix...
+  if (M &gt; 1) beta &lt;- t(apply(beta, 1, function(x) x + spread))
+
+  # reparameterize GPCM
+  if (model == &quot;GPCM&quot;) {
+    # make betas
+    eta &lt;- beta
+    for (i in 1:M) {
+      # rolling sum, apply over all items
+      beta[,i] &lt;- apply(eta[,1:i, drop=FALSE], 1, sum)
+    }
+  }
+
+  # create Itembank object
+  items &lt;- initItembank(model, alpha, beta, silent = TRUE)
+
+  # return
+  return(invisible(items))
+}
+</code></pre>
+
+<p>#</p>
+
+<p>Respondents
+TestItems have many Answers by Respondents</p>
+
+<p>Respondents are session
+* Configuration</p>
+
+<ul>
+  <li>
+    <p>Database creation</p>
+  </li>
+  <li>
+    <p>Database initialization</p>
+  </li>
+  <li>
+    <p>How to run the test suite</p>
+  </li>
+  <li>
+    <p>Services (job queues, cache servers, search engines, etc.)</p>
+  </li>
+  <li>
+    <p>Deployment instructions</p>
+  </li>
+  <li>
+    <p>…</p>
+  </li>
+</ul>
+
+<p>Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Mon Aug 24 16:51:11 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.1.5).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Cat
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!Cat.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (C)</a> &raquo;
+    
+    
+    <span class="title">Cat</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Cat
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Cat</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/cat.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fire-class_method" title="fire (class method)">+ (Object) <strong>fire</strong>(administered_and_responses, estimate, alphas, betas) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>require &#39;cat&#39;; Cat.fire(1=&gt;2,41=&gt;2, [1,1,1], Item.alphas,
+Item.betas).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#init-class_method" title="init (class method)">+ (Object) <strong>init</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="fire-class_method">
+  
+    + (<tt>Object</tt>) <strong>fire</strong>(administered_and_responses, estimate, alphas, betas) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>require &#39;cat&#39;; Cat.fire(1=&gt;2,41=&gt;2, [1,1,1], Item.alphas,
+Item.betas)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cat.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_fire'>fire</span><span class='lparen'>(</span><span class='id identifier rubyid_administered_and_responses'>administered_and_responses</span><span class='comma'>,</span> <span class='id identifier rubyid_estimate'>estimate</span><span class='comma'>,</span> <span class='id identifier rubyid_alphas'>alphas</span><span class='comma'>,</span> <span class='id identifier rubyid_betas'>betas</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span>
+  <span class='const'>R</span><span class='period'>.</span><span class='id identifier rubyid_administered'>administered</span> <span class='op'>=</span> <span class='id identifier rubyid_administered_and_responses'>administered_and_responses</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>responses &lt;- c(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_administered_and_responses'>administered_and_responses</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>estimate &lt;- c(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_estimate'>estimate</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>alphas &lt;- t(matrix(c(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_alphas'>alphas</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>), </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_alphas'>alphas</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_alphas'>alphas</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'>))\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>betas &lt;- t(matrix(c(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_betas'>betas</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>), </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_betas'>betas</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_betas'>betas</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'>))\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>result &lt;- MCAT(administered, responses,estimate, alphas,betas)\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>next_item &lt;- result$next_item</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_code'>code</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'>R</span><span class='period'>.</span><span class='id identifier rubyid_eval'>eval</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="init-class_method">
+  
+    + (<tt>Object</tt>) <strong>init</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cat.rb', line 2</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span>
+  <span class='const'>R</span><span class='period'>.</span><span class='id identifier rubyid_eval'>eval</span> <span class='heredoc_beg'>&lt;&lt;&quot;EOF&quot;</span>
+<span class='tstring_content'>      ##
+
+      #&#39; @title Fire and Forget wrapper for multidimensional computerized adaptive testing with the shadow test procedure.
+      #&#39; @author Karel Kroeze
+      #&#39; @param administered, vector of indices of administered items.
+      #&#39; @param responses, vector of responses to administered items. Assumed to be sorted with administered.
+      #&#39; @return list of;
+      #&#39; status; status code.
+      #&#39; estimate; vector/numeric of estimates per dimension
+      #&#39; variance; matrix/numeric variance/covariance matrix
+      #&#39; next_item; index for the next item to be presented
+
+      #&#39; next_item; index for the next item to be presented
+
+
+      initializeTestUnlessDefined &lt;- function(alphas, betas) {
+        if(!exists(&quot;test&quot;)) {
+          require(ShadowCAT)
+          items &lt;&lt;- initItembank(&quot;GRM&quot;, alphas, betas, silent = TRUE)
+          # initiate test
+          test &lt;&lt;- initTest(items,
+                           start = list( type = &#39;random&#39;, n = 5),
+                           stop = list( type = &#39;length&#39;, n = 30),
+                           estimator = &#39;MAP&#39;,
+                           selection = &#39;MI&#39;,
+                           objective = &#39;PD&#39;)
+        }
+      }
+
+      fire &lt;- function(administered, responses, estimate) {
+        initializeTestUnlessDefined &lt;- function(alphas, betas)
+        # Make sure prerequisites are loaded.
+
+        # set up required objects (with presets to MCAT-COPD).
+        # set a seed to load a fixed bank.
+        set.seed(1)
+        # load a test itembank.
+        #items &lt;- createTestBank(&quot;GRM&quot;, K = 200, Q = 4, M = 7, between = TRUE)
+
+        # initiate person
+        person &lt;- initPerson(items, prior = matrix(c(1,.5,.5,
+                                                     .5,1,.5,
+                                                     .5,.5,1),3,3))
+
+        # insert admin + responses.
+        person$administered &lt;- administered
+        person$responses &lt;- responses
+        person$available &lt;- person$available[-person$administered]
+
+        # set previous estimate
+        person$estimate &lt;- estimate
+
+        # get estimate
+        person &lt;- estimate(person, test)
+
+        # get next item
+        next_item &lt;&lt;- next_item(person, test)
+        estimate &lt;&lt;- person$estimate
+        variance &lt;&lt;- attr(person$estimate, &#39;variance&#39;)
+        return(list(status = 0, estimate = estimate, variance = diag(variance), next_item = next_item))
+      }
+</span><span class='heredoc_end'>EOF
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon Aug 24 16:51:11 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.1.5).
+</div>
+
+  </body>
+</html>

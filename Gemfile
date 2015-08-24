@@ -45,6 +45,7 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'rspec-rails'
+    gem "rails-erd"
 end
 
 gem 'foundation-rails'
@@ -56,6 +57,6 @@ gem 'kramdown'
 gem 'email_validator'
 gem 'pg'
 gem 'devise'
-# gem 'yard-rails'
+gem 'yard'
 # gem 'rserve-client'
 gem 'rinruby'

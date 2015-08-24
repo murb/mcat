@@ -157,11 +157,13 @@ class Itembank < ActiveRecord::Base
 
     next_item_index = r.t_next_item
     r_t_done = (r.t_done == 1) ? true : false
-    r_t_score = []
+    r_t_score = [4,3,2,1]
     puts "basics derived"
     if r_t_done
       code = "t_score <- calculateTscore(t_estimate, \"#{Rails.root.join("config","lookup","copd")}\", \"/lookup.rda\")"
       r.eval(code)
+      r_t_score = [1,2,3,4]
+
       r_t_score = r.t_score
       puts "T-test!"
     end
@@ -169,7 +171,9 @@ class Itembank < ActiveRecord::Base
     puts "retunr"
     standard_error = r.t_variance.collect{|a| a ? Math.sqrt(a) : nil}
 
-    return {next_item_index: next_item_index, next_item: items.all[next_item_index-1], estimate: r.t_estimate, variance: r.t_variance, done: r_t_done, t_score: r_t_score, se: standard_error}
+    rv = {next_item_index: next_item_index, next_item: items.all[next_item_index-1], estimate: r.t_estimate, variance: r.t_variance, done: r_t_done, t_score: r_t_score, se: standard_error}
+    # raise rv.to_s
+    return rv
   end
 
   class << self

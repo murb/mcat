@@ -60,6 +60,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    choice (0.2.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -133,6 +134,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.4.2)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     railties (4.2.1)
@@ -164,6 +170,7 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
+    ruby-graphviz (1.2.2)
     ruby-ole (1.2.11.8)
     rubyXL (3.3.8)
       nokogiri (>= 1.4.4)
@@ -225,6 +232,7 @@ GEM
       rubyzip (~> 1)
       spreadsheet (~> 1.0)
       zip-zip (~> 0.2)
+    yard (0.8.7.6)
     zip-zip (0.3)
       rubyzip (>= 1.0.0)
 
@@ -244,6 +252,7 @@ DEPENDENCIES
   kramdown
   pg
   rails (= 4.2.1)
+  rails-erd
   rinruby
   rspec-rails
   sass-rails (~> 5.0)
@@ -255,3 +264,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   workbook
+  yard
