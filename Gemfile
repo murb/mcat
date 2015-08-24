@@ -46,6 +46,8 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
     gem "rails-erd"
+    gem 'yard'
+
 end
 
 gem 'foundation-rails'
@@ -57,6 +59,5 @@ gem 'kramdown'
 gem 'email_validator'
 gem 'pg'
 gem 'devise'
-gem 'yard'
 # gem 'rserve-client'
 gem 'rinruby'

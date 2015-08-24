@@ -9,10 +9,26 @@ class ChoiceOptionSet < ActiveRecord::Base
   validates :choice_options, presence: true
   validates :choice_options_id, presence: true
 
+  # Get the text for a certain value
+  #
+  # == Parameters:
+  # value::
+  #   Integer value of the choice option
+  # == Return:
+  #   String with the actual test
+
   def text_for value
     choice_options.keys[choice_options.values.index(value)]
   end
 
+
+  # Set the choice options with a text blob
+  #
+  # == Parameters:
+  # unparsed_txt::
+  #   The manually formatted txt blob that represent all the choice options
+  # == Return:
+  #   Hash with the parsed options
   def choice_options= unparsed_txt
     choice_options_hash = {}
     if unparsed_txt.class == Hash

@@ -3,13 +3,25 @@
 
 ## Ruby version
 
-Tested on 2.1
+MultiCAT GUI has been tested on:
+* ruby version 2.1 (2.1.5)
+* R version >3 (3.1.3)
 
-## System dependencies
+Gems and other dependencies are managed through bundler. Run `bundle install` to install all other dependencies.
 
-R version >3
+## Basic domain model
 
-[ShadowCat](https://github.com/karel-kroeze/ShadowCAT) can be installed as follows:
+The domainmodel below depicts how models are related. Rails, using [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html), has a strong coupling between model and storage of the model's values in the database.
+
+![Domain model](domainmodel.png)
+
+## TODO
+
+The MultiCAT doesn't support multiple CAT-configurations yet, although much is in place to support this.
+
+## Debugging ShadowCAT
+
+[ShadowCat](https://github.com/karel-kroeze/ShadowCAT) is the actual MultiCAT-engine that powers this MultiCAT. It can be installed as follows:
 
     install.packages('devtools')
     library(devtools)
@@ -125,26 +137,3 @@ To quickly boot up:
       return(invisible(items))
     }
 
-#
-
-Respondents
-TestItems have many Answers by Respondents
-
-Respondents are session
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

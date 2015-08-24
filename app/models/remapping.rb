@@ -1,10 +1,3 @@
-# create_table "remappings", force: :cascade do |t|
-#   t.integer  "mapping_id"
-#   t.integer  "itembank_id"
-#   t.text     "mapping"
-#   t.datetime "created_at",  null: false
-#   t.datetime "updated_at",  null: false
-# end
 class Remapping < ActiveRecord::Base
   belongs_to :itembank
   has_many :items
@@ -13,6 +6,10 @@ class Remapping < ActiveRecord::Base
   validates :mapping, presence: true
   validates :mapping_id, presence: true
 
+  # Remaps a not unmapped value
+  #
+  # @param unmapped_value [Integer] value that should be mapped
+  # @return [Integer] new value
   def remap unmapped_value
     new_value = mapping[unmapped_value]
     if new_value
@@ -22,6 +19,13 @@ class Remapping < ActiveRecord::Base
     end
   end
 
+  # Set the remapping with a text blob
+  #
+  # == Parameters:
+  # unparsed_txt::
+  #   The manually formatted txt blob that represent all the choice options
+  # == Return:
+  #   Hash with the parsed options
   def mapping= unparsed_txt
     mapping_hash = {}
     if unparsed_txt.class == Hash

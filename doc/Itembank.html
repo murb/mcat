@@ -133,7 +133,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Initializes shadowcat with the right itembank.</p>
+</div></span>
   
 </li>
 
@@ -150,7 +152,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#evaluate-instance_method" title="#evaluate (instance method)">- (Object) <strong>evaluate</strong>(administered_and_responses, estimate) </a>
+      <a href="#evaluate-instance_method" title="#evaluate (instance method)">- (Hash) <strong>evaluate</strong>(administered_and_responses, estimate) </a>
     
 
     
@@ -164,7 +166,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Evaluates the question.</p>
+</div></span>
   
 </li>
 
@@ -186,7 +190,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Parses the items in the source file.</p>
+</div></span>
   
 </li>
 
@@ -208,7 +214,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Parsed the Itembank source file as a workbook.</p>
+</div></span>
   
 </li>
 
@@ -232,23 +240,23 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Initializes shadowcat with the right itembank</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
 191
 192
 193
@@ -289,10 +297,21 @@
 228
 229
 230
-231</pre>
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 191</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_define_rmethods'>define_rmethods</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='op'>=</span><span class='const'>R</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_eval'>eval</span> <span class='heredoc_beg'>&lt;&lt;EOF</span>
@@ -360,28 +379,85 @@
       <div class="method_details first">
   <h3 class="signature first" id="evaluate-instance_method">
   
-    - (<tt>Object</tt>) <strong>evaluate</strong>(administered_and_responses, estimate) 
+    - (<tt>Hash</tt>) <strong>evaluate</strong>(administered_and_responses, estimate) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Evaluates the question</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>administered_and_responses</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of administered questions and responses</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>estimate</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>is the current estimate</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>with the next questions and directions for the controller: it has the
+following keys: next_item_index, next_item, estimate, variance, done,
+t_score, se. The results follow the internals of the ShadowCAT.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
 85
 86
 87
@@ -474,10 +550,20 @@
 174
 175
 176
-177</pre>
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_evaluate'>evaluate</span><span class='lparen'>(</span><span class='id identifier rubyid_administered_and_responses'>administered_and_responses</span><span class='comma'>,</span> <span class='id identifier rubyid_estimate'>estimate</span><span class='rparen'>)</span>
   <span class='comment'># make sure R evironment is set up
@@ -550,8 +636,8 @@
 
   <span class='kw'>end</span>
 
-
-
+  <span class='comment'># Load currently administered and its responses
+</span>
   <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_administered'>administered</span> <span class='op'>=</span> <span class='id identifier rubyid_administered_and_responses'>administered_and_responses</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
   <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_responses'>responses</span> <span class='op'>=</span> <span class='id identifier rubyid_administered_and_responses'>administered_and_responses</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
 
@@ -596,14 +682,23 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses the items in the source file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-12
-13
 14
 15
 16
@@ -663,10 +758,12 @@
 70
 71
 72
-73</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_items!'>parse_items!</span>
   <span class='id identifier rubyid_items'>items</span><span class='period'>.</span><span class='id identifier rubyid_destroy_all'>destroy_all</span>
@@ -744,18 +841,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parsed the Itembank source file as a workbook</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-8
 9
-10</pre>
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/models/itembank.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_source_as_workbook'>source_as_workbook</span>
   <span class='ivar'>@source_as_workbook</span> <span class='op'>||=</span> <span class='const'>Workbook</span><span class='op'>::</span><span class='const'>Book</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
@@ -770,7 +878,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Aug 24 16:51:11 2015 by
+  Generated on Mon Aug 24 17:49:37 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>

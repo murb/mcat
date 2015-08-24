@@ -133,7 +133,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>returns al alphas in the collection.</p>
+</div></span>
   
 </li>
 
@@ -155,7 +157,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>returns al betas in the collection.</p>
+</div></span>
   
 </li>
 
@@ -177,7 +181,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>returns al ids in the collection.</p>
+</div></span>
   
 </li>
 
@@ -185,7 +191,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#index-class_method" title="index (class method)">+ (Object) <strong>index</strong>(id) </a>
+      <a href="#index-class_method" title="index (class method)">+ (Integer) <strong>index</strong>(id) </a>
     
 
     
@@ -199,7 +205,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>returns the index of the Item in the collection.</p>
+</div></span>
   
 </li>
 
@@ -216,7 +224,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#alphas-instance_method" title="#alphas (instance method)">- (Object) <strong>alphas</strong>(round_to = 2) </a>
+      <a href="#alphas-instance_method" title="#alphas (instance method)">- (Array&lt;Float&gt;) <strong>alphas</strong>(round_to = 2) </a>
     
 
     
@@ -230,7 +238,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>returns an array of alphas.</p>
+</div></span>
   
 </li>
 
@@ -238,7 +248,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#betas-instance_method" title="#betas (instance method)">- (Object) <strong>betas</strong>(round_to = 2) </a>
+      <a href="#betas-instance_method" title="#betas (instance method)">- (Array&lt;Float&gt;) <strong>betas</strong>(round_to = 2) </a>
     
 
     
@@ -252,7 +262,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>returns an array of betas.</p>
+</div></span>
   
 </li>
 
@@ -274,7 +286,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Flexibly parses the the reverse scale attribute value.</p>
+</div></span>
   
 </li>
 
@@ -298,18 +312,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns al alphas in the collection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-52
-53
-54</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alphas'>alphas</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_alphas'>alphas</span><span class='rbrace'>}</span>
@@ -328,18 +353,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns al betas in the collection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-49
-50
-51</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_betas'>betas</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_betas'>betas</span><span class='rbrace'>}</span>
@@ -358,18 +394,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns al ids in the collection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-55
-56
-57</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ids'>ids</span>
   <span class='cvar'>@@ids</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span>
@@ -382,24 +429,73 @@
       <div class="method_details ">
   <h3 class="signature " id="index-class_method">
   
-    + (<tt>Object</tt>) <strong>index</strong>(id) 
+    + (<tt>Integer</tt>) <strong>index</strong>(id) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns the index of the Item in the collection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>is the ID of the item</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>that represents the index</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-58
-59
-60</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ids'>ids</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
@@ -418,29 +514,80 @@
       <div class="method_details first">
   <h3 class="signature first" id="alphas-instance_method">
   
-    - (<tt>Object</tt>) <strong>alphas</strong>(round_to = 2) 
+    - (<tt>Array&lt;Float&gt;</tt>) <strong>alphas</strong>(round_to = 2) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns an array of alphas</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>round_to</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>2</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Integer to set rounding of the internal values used</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Float&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>with alphas</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-39
-40
-41
-42
-43
-44
-45
-46</pre>
+46
+47
+48
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alphas'>alphas</span><span class='lparen'>(</span><span class='id identifier rubyid_round_to'>round_to</span><span class='op'>=</span><span class='int'>2</span><span class='rparen'>)</span>
   <span class='comment'># TODO: make variable amounts of alpha possible
@@ -458,31 +605,82 @@
       <div class="method_details ">
   <h3 class="signature " id="betas-instance_method">
   
-    - (<tt>Object</tt>) <strong>betas</strong>(round_to = 2) 
+    - (<tt>Array&lt;Float&gt;</tt>) <strong>betas</strong>(round_to = 2) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns an array of betas</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>round_to</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>2</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Integer to set rounding of the internal values used</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Float&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>with betas</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-28
-29
-30
-31
 32
 33
 34
 35
 36
-37</pre>
+37
+38
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_betas'>betas</span><span class='lparen'>(</span><span class='id identifier rubyid_round_to'>round_to</span><span class='op'>=</span><span class='int'>2</span><span class='rparen'>)</span>
   <span class='comment'># TODO: make variable amoutns of beta possible
@@ -508,24 +706,35 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Flexibly parses the the reverse scale attribute value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-14
 15
 16
 17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/models/item.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reverse_scale='>reverse_scale=</span> <span class='id identifier rubyid_value'>value</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ja</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ja</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>or</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>true</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_write_attribute'>write_attribute</span><span class='lparen'>(</span><span class='symbol'>:reverse_scale</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -540,7 +749,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Aug 24 16:51:11 2015 by
+  Generated on Mon Aug 24 17:49:37 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>

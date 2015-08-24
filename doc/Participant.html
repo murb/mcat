@@ -119,7 +119,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#evaluate-instance_method" title="#evaluate (instance method)">- (Object) <strong>evaluate</strong> </a>
+      <a href="#evaluate-instance_method" title="#evaluate (instance method)">- (Hash) <strong>evaluate</strong> </a>
     
 
     
@@ -133,7 +133,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Evaluates all responses given and returns the outcomes, see
+Itembank#evaluate.</p>
+</div></span>
   
 </li>
 
@@ -141,7 +144,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#hash_participant%21-instance_method" title="#hash_participant! (instance method)">- (Object) <strong>hash_participant!</strong> </a>
+      <a href="#hash_participant%21-instance_method" title="#hash_participant! (instance method)">- (String) <strong>hash_participant!</strong> </a>
     
 
     
@@ -155,7 +158,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a hash representing the participant(&#39;s session).</p>
+</div></span>
   
 </li>
 
@@ -163,7 +168,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#init_response-instance_method" title="#init_response (instance method)">- (Object) <strong>init_response</strong>(response_params) </a>
+      <a href="#init_response-instance_method" title="#init_response (instance method)">- (Response) <strong>init_response</strong>(response_params) </a>
     
 
     
@@ -177,7 +182,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Init response initializes a new response for the current participant.</p>
+</div></span>
   
 </li>
 
@@ -185,7 +192,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#outcome_text-instance_method" title="#outcome_text (instance method)">- (Object) <strong>outcome_text</strong> </a>
+      <a href="#outcome_text-instance_method" title="#outcome_text (instance method)">- (String) <strong>outcome_text</strong> </a>
     
 
     
@@ -199,7 +206,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Outcome text returns the participant&#39;s outcome as text.</p>
+</div></span>
   
 </li>
 
@@ -207,7 +216,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#responses_as_text-instance_method" title="#responses_as_text (instance method)">- (Object) <strong>responses_as_text</strong> </a>
+      <a href="#responses_as_text-instance_method" title="#responses_as_text (instance method)">- (String) <strong>responses_as_text</strong> </a>
     
 
     
@@ -221,7 +230,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Responses as text returns the participant&#39;s responses as text.</p>
+</div></span>
   
 </li>
 
@@ -229,7 +240,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#responses_to_stat_hash-instance_method" title="#responses_to_stat_hash (instance method)">- (Object) <strong>responses_to_stat_hash</strong> </a>
+      <a href="#responses_to_stat_hash-instance_method" title="#responses_to_stat_hash (instance method)">- (Hash) <strong>responses_to_stat_hash</strong> </a>
     
 
     
@@ -243,7 +254,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Translate responses to an hash to be used in the <span class='object_link'><a href="#evaluate-instance_method" title="Participant#evaluate (method)">#evaluate</a></span> method.</p>
+</div></span>
   
 </li>
 
@@ -251,7 +264,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#result-instance_method" title="#result (instance method)">- (Object) <strong>result</strong> </a>
+      <a href="#short_hash-instance_method" title="#short_hash (instance method)">- (String) <strong>short_hash</strong> </a>
     
 
     
@@ -265,7 +278,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Short ID.</p>
+</div></span>
   
 </li>
 
@@ -273,7 +288,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#short_hash-instance_method" title="#short_hash (instance method)">- (Object) <strong>short_hash</strong> </a>
+      <a href="#to_param-instance_method" title="#to_param (instance method)">- (String) <strong>to_param</strong> </a>
     
 
     
@@ -287,29 +302,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#to_param-instance_method" title="#to_param (instance method)">- (Object) <strong>to_param</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Parameterized ID.</p>
+</div></span>
   
 </li>
 
@@ -327,24 +322,54 @@
       <div class="method_details first">
   <h3 class="signature first" id="evaluate-instance_method">
   
-    - (<tt>Object</tt>) <strong>evaluate</strong> 
+    - (<tt>Hash</tt>) <strong>evaluate</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Evaluates all responses given and returns the outcomes, see
+Itembank#evaluate</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>see <span class='object_link'><a href="Itembank.html#evaluate-instance_method" title="Itembank#evaluate (method)">Itembank#evaluate</a></span></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_evaluate'>evaluate</span>
   <span class='ivar'>@evaluate</span> <span class='op'>||=</span> <span class='id identifier rubyid_itembank'>itembank</span><span class='period'>.</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lparen'>(</span><span class='id identifier rubyid_responses_to_stat_hash'>responses_to_stat_hash</span><span class='comma'>,</span><span class='id identifier rubyid_itembank'>itembank</span><span class='period'>.</span><span class='id identifier rubyid_items'>items</span><span class='period'>.</span><span class='id identifier rubyid_alphas'>alphas</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lbrace'>{</span><span class='int'>1</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -357,24 +382,53 @@
       <div class="method_details ">
   <h3 class="signature " id="hash_participant!-instance_method">
   
-    - (<tt>Object</tt>) <strong>hash_participant!</strong> 
+    - (<tt>String</tt>) <strong>hash_participant!</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a hash representing the participant(&#39;s session)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a hashed string</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-9
-10
-11</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hash_participant!'>hash_participant!</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_participant_hash'>participant_hash</span> <span class='op'>=</span> <span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA2</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>256</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_serializable_hash'>serializable_hash</span><span class='embexpr_end'>}</span><span class='tstring_content'>+</span><span class='embexpr_beg'>#{</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='embexpr_end'>}</span><span class='tstring_content'>+jibrrrji!@#sh.+</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_session'>session</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -387,27 +441,76 @@
       <div class="method_details ">
   <h3 class="signature " id="init_response-instance_method">
   
-    - (<tt>Object</tt>) <strong>init_response</strong>(response_params) 
+    - (<tt><span class='object_link'><a href="Response.html" title="Response (class)">Response</a></span></tt>) <strong>init_response</strong>(response_params) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Init response initializes a new response for the current participant</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>response_params</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>sets the new response&#39;s parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Response.html" title="Response (class)">Response</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>as an object</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-32
-33
-34
-35
-36
-37</pre>
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_init_response'>init_response</span> <span class='id identifier rubyid_response_params'>response_params</span>
   <span class='id identifier rubyid_responses'>responses</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>item_id:</span><span class='id identifier rubyid_response_params'>response_params</span><span class='lbracket'>[</span><span class='symbol'>:item_id</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_destroy_all'>destroy_all</span>
@@ -423,24 +526,53 @@
       <div class="method_details ">
   <h3 class="signature " id="outcome_text-instance_method">
   
-    - (<tt>Object</tt>) <strong>outcome_text</strong> 
+    - (<tt>String</tt>) <strong>outcome_text</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Outcome text returns the participant&#39;s outcome as text</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>with the outcome in ASCII text</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-28
-29
-30</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_outcome_text'>outcome_text</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Lichamelijk functioneren: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:estimate</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:se</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)\nVermoeidheid: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:estimate</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:se</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)\nVermogen om aandeel te hebben in sociale rollen en activiteiten: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:estimate</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:se</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)\nImpact van COPD-gerelateerde klachten: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:estimate</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='embexpr_end'>}</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evaluate'>evaluate</span><span class='lbracket'>[</span><span class='symbol'>:se</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -453,28 +585,57 @@
       <div class="method_details ">
   <h3 class="signature " id="responses_as_text-instance_method">
   
-    - (<tt>Object</tt>) <strong>responses_as_text</strong> 
+    - (<tt>String</tt>) <strong>responses_as_text</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Responses as text returns the participant&#39;s responses as text</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>with the responses in ASCII text</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
-26
-27</pre>
+33
+34
+35
+36
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_responses_as_text'>responses_as_text</span>
   <span class='id identifier rubyid_rv'>rv</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
@@ -491,24 +652,53 @@
       <div class="method_details ">
   <h3 class="signature " id="responses_to_stat_hash-instance_method">
   
-    - (<tt>Object</tt>) <strong>responses_to_stat_hash</strong> 
+    - (<tt>Hash</tt>) <strong>responses_to_stat_hash</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Translate responses to an hash to be used in the <span class='object_link'><a href="#evaluate-instance_method" title="Participant#evaluate (method)">#evaluate</a></span> method</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>see Response#evaluate</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-47
-48
-49</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_responses_to_stat_hash'>responses_to_stat_hash</span>
   <span class='id identifier rubyid_responses'>responses</span><span class='period'>.</span><span class='id identifier rubyid_to_stat_hash'>to_stat_hash</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -519,56 +709,55 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="result-instance_method">
-  
-    - (<tt>Object</tt>) <strong>result</strong> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-43
-44
-45</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 43</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_result'>result</span>
-
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="short_hash-instance_method">
   
-    - (<tt>Object</tt>) <strong>short_hash</strong> 
+    - (<tt>String</tt>) <strong>short_hash</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Short ID</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the participant_hash shortened to 8 characters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-17
-18
-19</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_short_hash'>short_hash</span>
   <span class='id identifier rubyid_to_param'>to_param</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='int'>7</span><span class='rbracket'>]</span>
@@ -581,24 +770,53 @@
       <div class="method_details ">
   <h3 class="signature " id="to_param-instance_method">
   
-    - (<tt>Object</tt>) <strong>to_param</strong> 
+    - (<tt>String</tt>) <strong>to_param</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parameterized ID</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the participant_hash</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-13
-14
-15</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/models/participant.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_param'>to_param</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_participant_hash'>participant_hash</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -613,7 +831,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Aug 24 16:51:11 2015 by
+  Generated on Mon Aug 24 17:49:37 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>

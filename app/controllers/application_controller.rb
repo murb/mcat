@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
   def docs
 
   end
+
+  def sys_docs
+
+  end
 end

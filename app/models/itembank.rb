@@ -5,10 +5,12 @@ class Itembank < ActiveRecord::Base
   has_many :choice_option_sets
   has_many :remappings
 
+  # Parsed the Itembank source file as a workbook
   def source_as_workbook
     @source_as_workbook ||= Workbook::Book.open(source.file.file)
   end
 
+  # Parses the items in the source file
   def parse_items!
     items.destroy_all
     choice_option_sets.destroy_all
@@ -71,6 +73,14 @@ class Itembank < ActiveRecord::Base
       end
     end
   end
+
+  # Evaluates the question
+  #
+  #
+  #
+  # @param administered_and_responses [Hash] of administered questions and responses
+  # @param estimate is the current estimate
+  # @return [Hash] with the next questions and directions for the controller: it has the following keys: next_item_index, next_item, estimate, variance, done, t_score, se. The results follow the internals of the ShadowCAT.
 
   def evaluate(administered_and_responses, estimate)
     # make sure R evironment is set up
@@ -143,7 +153,7 @@ class Itembank < ActiveRecord::Base
 
     end
 
-
+    # Load currently administered and its responses
 
     r.administered = administered_and_responses.keys
     r.responses = administered_and_responses.values
@@ -177,6 +187,7 @@ class Itembank < ActiveRecord::Base
   end
 
   class << self
+    # Initializes shadowcat with the right itembank
     def define_rmethods(r=R)
       r.eval <<EOF
         initializeTestUnlessDefined <- function(alphas, betas) {
