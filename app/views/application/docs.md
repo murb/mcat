@@ -50,5 +50,5 @@ Een deelnemer kan slechts een vragenlijst invullen. Registratie, anders dan het 
 
 ### Technische documentatie
 
-De technische documentatie is een afgeleide van de source code en gegenereerd via YARD. [Open de technische documentatie](http://cat.murb.nl/yarddocs).
+De technische documentatie is een afgeleide van de source code en gegenereerd via YARD. [Open de technische documentatie](http://cat.murb.nl/yarddocs/index.html).
 
