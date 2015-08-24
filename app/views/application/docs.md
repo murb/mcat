@@ -48,4 +48,7 @@ Een examinator kan nieuwe deelnemers uitnodigen door een nieuwe uitnodiging te m
 
 Een deelnemer kan slechts een vragenlijst invullen. Registratie, anders dan het invullen van basisgegevens, is niet van toepassing. Persoonsidentificerende gegevens worden niet vastgelegd om identificatie van de deelnemer niet mogelijk te maken.
 
+### Technische documentatie
+
+De technische documentatie is een afgeleide van de source code en gegenereerd via YARD. [Open de technische documentatie](http://cat.murb.nl/yarddocs).
 
