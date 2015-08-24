@@ -1,0 +1,7 @@
+<p>Beste <%= @email %>!</p>
+
+<p>U kunt uw account bevestigen via de volgende link.</p>
+
+<p><%= link_to 'Bevestig mijn account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Kwaliteit bij leven COPD</p>

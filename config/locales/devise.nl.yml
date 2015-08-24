@@ -48,6 +48,23 @@ nl:
       send_instructions: "U zult een e-mail met instructies ontvangen over hoe u uw account moet unlocken over een paar minuten."
       send_paranoid_instructions: "Als uw e-mailadres bestaat in onze database, zult u een e-mail met instructies ontvangen over hoe u uw account moet unlocken over een paar minuten."
       unlocked: "Uw account is succesvol geunlockt. Log in om verder te gaan."
+  user_session: &user_session
+    email: mmaail
+  admin_session:
+    email: mmaail
+  activerecord:
+    models:
+      user: Gebruiker
+    attributes:
+      user: &user
+        email: "E-mail"
+        password: "Wachtwoord"
+        password_confirmation: "Wachtwoord herhaling"
+        remember_me: "Onthoud mij"
+      admin:
+        <<: *user
+      examinator:
+        <<: *user
   errors:
     messages:
       already_confirmed: "is al bevestigd, probeer in te loggen"

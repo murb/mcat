@@ -26,4 +26,9 @@
   box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
   padding-bottom: 3em;
   margin-bottom: 2em;
+  background: #fff;
+}
+
+body {
+  background: #eee;
 }

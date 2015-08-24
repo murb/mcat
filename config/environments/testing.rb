@@ -17,6 +17,9 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'cat.murb.nl', port: 80 }
 
+
+  config.action_mailer.delivery_method = :sendmail
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

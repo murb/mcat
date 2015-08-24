@@ -1,0 +1,7 @@
+<p>Beste <%= @resource.email %>!</p>
+
+<p>Uw account is voor uw eigen veiligheid automatisch geblokkeerd wegens meerdere foutieve inlogpogingen.</p>
+
+<p>Klik onderstaande link om uw account te ontgrendelen:</p>
+
+<p><%= link_to 'Ontgrendel', unlock_url(@resource, unlock_token: @token) %></p>

@@ -43,7 +43,7 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @response = current_participant.init_response(response_params)
-    # @item = @response.item
+    #
 
     respond_to do |format|
       if @response.save
@@ -57,6 +57,7 @@ class ResponsesController < ApplicationController
           format.json { render :show, status: :created, location: @response }
         end
       else
+        @item = @response.item
         format.html { render :new }
         format.json { render json: @response.errors, status: :unprocessable_entity }
       end

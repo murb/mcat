@@ -1,8 +1,8 @@
 <%= simple_form_for(@response) do |f| %>
   <%= f.error_notification %>
 
-  <h1><%=@item.instruction%></h1>
-  <h3 class="subtitle"><%=@item.item_stem%></h3>
+  <h3><%=@item.instruction%>&nbsp;</h3>
+  <h2 ><%=@item.item_stem%></h3>
     <%= f.hidden_field :item_id %>
     <div class="form-inputs radio-5">
     <%= f.collection_radio_buttons :value, @item.choice_option_set.choice_options, :last,:first, html5: true, required:true %>
