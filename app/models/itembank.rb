@@ -1,7 +1,7 @@
 class Itembank < ActiveRecord::Base
   mount_uploader :source, WorkbookUploader
   mount_uploader :lookup, LookupUploader
-  # after_save :parse_items!
+  after_save :parse_items!
   has_many :items
   has_many :choice_option_sets
   has_many :remappings
