@@ -50,6 +50,8 @@ group :development, :test do
 
 end
 
+gem 'jquery-turbolinks'
+
 gem 'foundation-rails'
 gem 'workbook'
 # gem 'workbook', git: '/Users/murb/Documents/Zakelijk/Projecten/gems/workbook'

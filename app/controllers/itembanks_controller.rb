@@ -70,6 +70,6 @@ class ItembanksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def itembank_params
-      params.require(:itembank).permit(:name, :source)
+      params.require(:itembank).permit(:name, :source, :lookup)
     end
 end

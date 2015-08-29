@@ -19,10 +19,12 @@ class ParticipantsController < ApplicationController
   # GET /participants/1
   # GET /participants/1.json
   def show
+    @title = "De score (#{@participant.short_hash})"
   end
 
   # GET /participants/new
   def new
+    @title = "Start de deelname"
     session.destroy
     invite_hash = params[:invite_hash].to_s
     @participant = Participant.new(session: session.id, invite_hash: invite_hash)

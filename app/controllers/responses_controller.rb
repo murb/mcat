@@ -13,14 +13,15 @@ class ResponsesController < ApplicationController
     end
     @responses = @responses.all
   end
-
-  # GET /responses/1
-  # GET /responses/1.json
-  def show
-  end
+  #
+  # # GET /responses/1
+  # # GET /responses/1.json
+  # def show
+  # end
 
   # GET /responses/new
   def new
+
     if current_participant.responses.count > 0
       @prev_eval_results = current_participant.evaluate
 
@@ -31,7 +32,8 @@ class ResponsesController < ApplicationController
     else
       @item = Item.first
     end
-
+    vraagnummer = current_participant.responses.count + 1
+    @title = "Vraag #{vraagnummer}"
     @response = Response.new(item_id: @item.id)
   end
 

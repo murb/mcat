@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Vragenlijst kwaliteit van leven bij COPD" %></title>
+    <title><%= @title ? "#{@title} - " : ""%>Vragenlijst kwaliteit van leven bij COPD</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -33,6 +33,7 @@
           <ul class="left">
             <% if current_admin %>
               <li class="<%='active' if controller.class==InvitesController%>"><%= link_to 'Genodigden', invites_path %></li>
+              <!-- <li class="<%='active' if controller.class==ParticipantsController%>"><%= link_to 'Participants', participants_path %></li> -->
               <li class="<%='active' if controller.class==ItembanksController%>"><%= link_to 'Itembanks', itembanks_path %></li>
               <li class="<%='active' if controller.class==Examinators::RegistrationsController%>"><%= link_to 'Nieuwe examinator', new_examinator_registration_path %></li>
               <li class=""><%= link_to 'Documentatie', '/docs' %></li>

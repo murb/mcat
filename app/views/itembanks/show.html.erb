@@ -3,11 +3,19 @@
   <strong>Name:</strong>
   <%= @itembank.name %>
 </p>
-
+<% if @itembank.source? %>
 <p>
   <strong>Source:</strong>
-  <%= @itembank.source %>
+  <%= link_to @itembank.source.filename, @itembank.source.url  %>
 </p>
+<% end %>
+<% if @itembank.lookup? %>
+<p>
+  <strong>Lookup:</strong>
+  <%= link_to @itembank.lookup.filename, @itembank.lookup.url  %>
+</p>
+
+<% end %>
 
 <%= link_to 'Edit', edit_itembank_path(@itembank) %> |
 <%= link_to 'Back', itembanks_path %>

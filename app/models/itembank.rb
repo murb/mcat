@@ -1,5 +1,6 @@
 class Itembank < ActiveRecord::Base
   mount_uploader :source, WorkbookUploader
+  mount_uploader :lookup, LookupUploader
   after_save :parse_items!
   has_many :items
   has_many :choice_option_sets
@@ -83,6 +84,7 @@ class Itembank < ActiveRecord::Base
   # @return [Hash] with the next questions and directions for the controller: it has the following keys: next_item_index, next_item, estimate, variance, done, t_score, se. The results follow the internals of the ShadowCAT.
 
   def evaluate(administered_and_responses, estimate)
+    puts "Evaluate #{administered_and_responses}, with estimate #{estimate}"
     # make sure R evironment is set up
     r = R
     begin
@@ -170,7 +172,7 @@ class Itembank < ActiveRecord::Base
     r_t_score = [4,3,2,1]
     puts "basics derived"
     if r_t_done
-      code = "t_score <- calculateTscore(t_estimate, \"#{Rails.root.join("config","lookup","copd")}\", \"/lookup.rda\")"
+      code = "t_score <- calculateTscore(t_estimate, \"#{self.lookup.path}\")"
       r.eval(code)
       r_t_score = [1,2,3,4]
 
@@ -205,9 +207,9 @@ class Itembank < ActiveRecord::Base
           return(list(items = items, test = test))
         }
 
-        calculateTscore <- function(estimate,path,filename) {
+        calculateTscore <- function(estimate,path) {
           # load file, store name
-          name <- load(paste0(path, filename))
+          name <- load(paste0(path))
           # rename lookup table
           lookup <- get(name)
           # remove original version
@@ -221,11 +223,14 @@ class Itembank < ActiveRecord::Base
         }
 
         fire <- function(administered, responses, estimate) {
-          set.seed(1)
-          person <- initPerson(items, prior = matrix(c(1,.753,.727,.873,
-                                                       .753,1,.761,.776,
-                                                       .727,.761,1,.838,
-                                                       .873,.776,.838,1),4,4))
+          # set a quasi-random seed
+          set.seed(as.numeric(format(Sys.time(), "%OS3"))*1000)
+
+          # initiate person
+          person <- initPerson(items, prior = matrix(c(   1,.722,.725,.798,
+                                                       .722,   1,.698,.713,
+                                                       .725,.698,   1,.773,
+                                                       .798,.713,.773,   1),4,4))
           person$administered <- administered
           person$responses <- responses
           person$available <- person$available[-person$administered]
