@@ -21,7 +21,7 @@
         <td><%= invite.code %></td>
         <td><%= invite.comments %></td>
         <td><%= invite.examinator_email %></td>
-        <td><ul><% invite.participants.each do |participant| %><li><%= link_to participant.short_hash, participant%></li><% end %></ul></td>
+        <td><ul><% invite.participants.each do |participant| %><li><%= link_to participant.short_hash, participant, "data-no-turbolink" => true%></li><% end %></ul></td>
         <td><%= link_to new_participant_url(invite_hash: invite.invite_hash), new_participant_url(invite_hash: invite.invite_hash)%></td>
         <td><%= link_to 'Stel uitnodigingsmail op', "mailto:?body=#{url_encode(render(partial: 'invite_mail', locals: {full_link:new_participant_url(invite_hash: invite.invite_hash)}))}"%>
         <td><%= link_to 'Verwijder uitnodiging', invite, method: :delete, data: { confirm: 'Wanneer u een uitnodiging verwijderd en een deelnemer maakt toch gebruik van de uitnodiging verliest u de koppeling met uw genodigde deelnemer.' } %></td>
