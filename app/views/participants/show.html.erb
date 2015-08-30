@@ -80,7 +80,10 @@ Paap, M. C. S., Bode, C., Lenferink, L. I. M., Terwee, C. B., & van der Palen, J
 <% if @participant.invite_hash? %>
 <p>Uw behandelaar heeft uw scores ontvangen.</p>
 <% else %>
-<p>U dient deze pagina door te sturen naar uw behandelaar.</p>
+<p>U dient deze pagina door te sturen naar uw behandelaar. Dit doet u door het adres (of koppeling) van deze pagina te kopiëren en te plakken in een e-mailbericht of de deelfunctionaliteit van uw browser te gebruiken.</p>
+<p>Het adres (of koppeling) van deze pagina is:</p>
+<pre><%=participant_url(@participant)%></pre>
+<p>Bedankt voor uw medewerking.</p>
 <% end %>
 
 
