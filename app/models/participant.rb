@@ -2,6 +2,8 @@ class Participant < ActiveRecord::Base
   before_create :hash_participant!
   has_many :responses
   validates :participant_hash, uniqueness: true
+  validates :age, format: { with: /[0-9]*/ }
+  validates_presence_of :age
   belongs_to :itembank
   belongs_to :invite, foreign_key: :invite_hash, primary_key: :invite_hash
   has_one :examinator, through: :invite

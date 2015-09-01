@@ -14,14 +14,14 @@
 </div>
 <h1>Score rapport</h1>
 <h3 class="subheader">Adaptieve kwaliteit van leven vragenlijst voor COPD</h3>
-<p>Deze vragenlijst bestrijkt vier domeinen die te maken hebben met kwaliteit van leven: vermoeidheid, impact van COPD-gerelateerde klachten, lichamelijk functioneren,en vermogen om aandeel te hebben in sociale rollen en activiteiten.</p>
+<p>Deze vragenlijst bestrijkt vier domeinen die te maken hebben met kwaliteit van leven: vermoeidheid, impact van COPD-gerelateerde klachten, lichamelijk functioneren, en vermogen om aandeel te hebben in sociale rollen en activiteiten.</p>
 <p>De scores op deze vier domeinen zijn geschat op een schaal met een gemiddelde van 0 en een standaard deviatie van 1 (z-scores). Gemiddeld betekent hier: gemiddeld voor een COPD-patiënt.</p>
 <p>Patiënt <%=@participant.short_hash%> had de volgende scores (standaard meetfout tussen haakjes) op deze vier domeinen: </p>
 <ul>
   <li><%= @participant.evaluate[:estimate][0].round(1) %> (<%= @participant.evaluate[:se][0].round(1) %>) op lichamelijk functioneren</li>
   <li><%= @participant.evaluate[:estimate][1].round(1) %> (<%= @participant.evaluate[:se][1].round(1) %>) op vermoeidheid</li>
   <li><%= @participant.evaluate[:estimate][2].round(1) %> (<%= @participant.evaluate[:se][2].round(1) %>) op vermogen om aandeel te hebben in sociale rollen en activiteiten</li>
-  <li><%= @participant.evaluate[:estimate][3].round(1) %> (<%= @participant.evaluate[:se][3].round(1) %>) op Impact van COPD-gerelateerde klachten</li>
+  <li><%= @participant.evaluate[:estimate][3].round(1) %> (<%= @participant.evaluate[:se][3].round(1) %>) op impact van COPD-gerelateerde klachten</li>
 </ul>
 <p>De scores zijn hieronder weergegeven in een figuur.</p>
 <%= render partial: 'graph.svg'%>
@@ -47,7 +47,7 @@
   <li><%= @participant.evaluate[:t_score][0].round(1) %> (<%= @participant.evaluate[:se][0].round(1) %>) op lichamelijk functioneren</li>
   <li><%= @participant.evaluate[:t_score][1].round(1) %> (<%= @participant.evaluate[:se][1].round(1) %>) op vermoeidheid</li>
   <li><%= @participant.evaluate[:t_score][2].round(1) %> (<%= @participant.evaluate[:se][2].round(1) %>) op vermogen om aandeel te hebben in sociale rollen en activiteiten</li>
-  <li><%= @participant.evaluate[:t_score][3].round(1) %> (<%= @participant.evaluate[:se][3].round(1) %>) op Impact van COPD-gerelateerde klachten</li>
+  <li><%= @participant.evaluate[:t_score][3].round(1) %> (<%= @participant.evaluate[:se][3].round(1) %>) op impact van COPD-gerelateerde klachten</li>
 </ul>
 
 <h4>Toelichting schatting van scores

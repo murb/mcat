@@ -42,7 +42,7 @@ class ParticipantsController < ApplicationController
 
     respond_to do |format|
       if @participant.save
-        format.html { redirect_to new_test_path, notice: 'Je gegevens zijn vastgelegd, begin de test!' }
+        format.html { redirect_to new_test_path, notice: 'Uw gegevens zijn vastgelegd, begin de test!' }
         format.json { render :show, status: :created, location: @participant }
       else
         format.html { render :new }
@@ -70,7 +70,7 @@ class ParticipantsController < ApplicationController
   def destroy
     @participant.destroy
     respond_to do |format|
-      format.html { redirect_to participants_url, notice: 'Participant is verwijderd.' }
+      format.html { redirect_to participants_url, notice: 'De deelnemer is verwijderd.' }
       format.json { head :no_content }
     end
   end
