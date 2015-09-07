@@ -4,6 +4,7 @@ lock '3.4.0'
 set :application, 'cat.murb.nl'
 set :repo_url, 'cat@murb.nl:/home/cat/source-catm.git'
 
+set :main_user, 'cat'
 
 set :bundle_bins, []
 set :bundle_roles, :all
@@ -37,7 +38,7 @@ set :deploy_to, '~/public/cat.murb.nl'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('db/testing.sqlite3')
+set :linked_files, fetch(:linked_files, []).push("db/#{fetch(:stage)}.sqlite3")
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')

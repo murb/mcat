@@ -7,10 +7,12 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
+set :main_server, "192.168.56.103"
+set :main_user_server, "#{fetch(:main_user)}@#{fetch(:main_server)}"
 
-role :app, %w{cat@192.168.56.103}
-role :web, %w{cat@192.168.56.103}
-role :db,  %w{cat@192.168.56.103}
+role :app, fetch(:main_user_server)
+role :web, fetch(:main_user_server)
+role :db,  fetch(:main_user_server)
 
 
 # Extended Server Syntax
@@ -19,7 +21,7 @@ role :db,  %w{cat@192.168.56.103}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '192.168.56.103', user: 'cat', roles: %w{web app}, my_property: :my_value
+server fetch(:main_server), user: fetch(:main_user), roles: %w{web app db}, my_property: :my_value
 
 # role-based syntax
 # ==================
