@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'cat.murb.nl'
-set :repo_url, 'cat@murb.nl:/home/cat/source-catm.git'
+set :repo_url, 'git@github.com:murb/mcat.git'
 
 set :main_user, 'cat'
 
