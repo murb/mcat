@@ -76,10 +76,10 @@ Een virtuele machine draaien kost bij voorkeur 2GB aan extra geheugen.
 7. Schakel netwerk 2 in en kies Host only adapter, de defaults zijn verder goed. Klik op Ok.
 8. Start de machine en wacht totdat je een bericht lijkend op het volgende ziet:
 
-    Bezoek een van de volgende urls (waarschijnlijk de laatste) om de applicatie te starten:
+        Bezoek een van de volgende urls (waarschijnlijk de laatste) om de applicatie te starten:
 
-    10.0.0.5
-    192.168.56.101
+        10.0.0.5
+        192.168.56.101
 
 9. Open je favoriete browser en typ de url, 4x max 3 nummers, over in je browser
 

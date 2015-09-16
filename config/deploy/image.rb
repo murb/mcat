@@ -7,7 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set :main_server, "192.168.56.103"
+set :main_server, "192.168.56.101"
 set :main_user_server, "#{fetch(:main_user)}@#{fetch(:main_server)}"
 
 role :app, fetch(:main_user_server)
