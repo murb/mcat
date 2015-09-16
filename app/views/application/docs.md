@@ -56,3 +56,30 @@ Een deelnemer kan een vragenlijst zijn gestart zonder dat hij/zij de uitnodiging
 
 De technische documentatie is een afgeleide van de source code en gegenereerd via YARD. [Open de technische documentatie](http://cat.murb.nl/yarddocs/index.html).
 
+## Image
+
+Om de werking lokaal mogelijk te maken en te testen zonder internet verbinding is er een image voorbereid. Dit is een VirtualBox image gebaseerd op debian.
+
+### Vereisten
+
+Je hebt VirtualBox nodig om de image te gebruiken, deze is beschikbaar voor Mac, Windows, Linux en Solaris: [VirtualBox downloaden](https://www.virtualbox.org/wiki/Downloads)
+Een virtuele machine draaien kost bij voorkeur 2GB aan extra geheugen.
+
+### Image toevoegen
+
+1. Start Virtualbox
+2. Selecteer Nieuw/New
+3. Voer een willekeurige naam in, kies Type Linux, en systeem Debian 64bit
+4. Geheugegrootte minimaal 1GB (1024MB), idealiter 2048MB
+5. Selecteer de virtuele machine en ga naar Instellingen
+6. Ga naar het tabblad Netwerk en klik op Netwerk 2
+7. Schakel netwerk 2 in en kies Host only adapter, de defaults zijn verder goed. Klik op Ok.
+8. Start de machine en wacht totdat je een bericht lijkend op het volgende ziet:
+
+    Bezoek een van de volgende urls (waarschijnlijk de laatste) om de applicatie te starten:
+
+    10.0.0.5
+    192.168.56.101
+
+9. Open je favoriete browser en typ de url, 4x max 3 nummers, over in je browser
+
